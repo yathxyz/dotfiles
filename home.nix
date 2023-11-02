@@ -10,6 +10,7 @@
     brave
     busybox
     discord
+    dconf
     emacs
     feh
     gnupg
@@ -61,6 +62,25 @@
 
   programs.terminator.enable = true;
   programs.neovim.enable = true;
+
+  #programs.dconf.enable = true;
+
+  qt.enable = true;
+  qt.platformTheme = "gtk";
+  qt.style.name = "adwaita-dark";
+  qt.style.package = pkgs.adwaita-qt;
+
+  gtk = {
+    enable = true;
+    cursorTheme.package = pkgs.bibata-cursors;
+    cursorTheme.name = "Bibata-Modern-Ice";
+
+    theme.package = pkgs.adw-gtk3;
+    theme.name = "adw-gtk3";
+
+    #iconTheme.package = pkgs.gruvboxPlus;
+    #iconTheme.name = "GruvboxPlus";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
