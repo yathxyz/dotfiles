@@ -11,7 +11,6 @@
     busybox
     discord
     dconf
-    emacs
     feh
     gnupg
     gnuplot
@@ -49,8 +48,6 @@
   };
 
   home.sessionVariables = rec {
-    # EDITOR = "emacs";
-    #
     WORKDIR = "$HOME/work/";
     ZOTERODIR = "$HOME/Zotero/";
     STUFFDIR = "$HOME/stuff/";
@@ -61,7 +58,18 @@
   };
 
   programs.terminator.enable = true;
-  programs.neovim.enable = true;
+  # TODO further configure the emacs module
+
+  programs.emacs.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    defaultEditor = true;
+  };
 
   #programs.dconf.enable = true;
 
