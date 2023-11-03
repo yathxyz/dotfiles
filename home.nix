@@ -78,8 +78,15 @@
     theme.package = pkgs.adw-gtk3;
     theme.name = "adw-gtk3";
 
-    #iconTheme.package = pkgs.gruvboxPlus;
-    #iconTheme.name = "GruvboxPlus";
+    # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
+    # something
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
   };
 
   # Let Home Manager install and manage itself.
