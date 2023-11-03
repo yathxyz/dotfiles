@@ -2,30 +2,30 @@
   description = "Home Manager configuration of yanni";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { nixpkgs, home-manager, nix-colors, ... }:
     let
+      # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."yanni" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      homeConfigurations = {
+        "yanni" = home-manager.lib.homeManagerConfiguration {
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
+          inherit pkgs;
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-        extraSpecialArgs = { inherit nix-colors; };
+          modules = [ ./home.nix ];
+          extraSpecialArgs = { inherit nix-colors; };
+        };
       };
     };
 }
