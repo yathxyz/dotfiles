@@ -49,6 +49,7 @@
       pinentry-mode loopback
       '';
     ".config/i3/config".text = builtins.readFile ./config/i3;
+    ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
   };
 
   home.sessionVariables = rec {
