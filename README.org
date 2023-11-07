@@ -4,8 +4,14 @@
 A barebones config setup for my home directory.
 
 ** Install
-0. Have nixOS with flakes enabled.
+1. Have nixOS with flakes enabled.
 
+*** Quick install (if home-manager is already installed)
+#+begin_src shell
+home-manager init --switch --flake github:yathxyz/dotfiles
+#+end_src
+
+*** Manual install (set a different username)
 1. In your configuration.nix add the following.
 
 #+begin_src nix
