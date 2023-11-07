@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of yanni";
+  description = "home manager configuration for dotfiles";
 
   inputs = {
 
@@ -17,9 +17,10 @@
       # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      finalname = "yanni";
     in {
       homeConfigurations = {
-        "yanni" = home-manager.lib.homeManagerConfiguration {
+        ${finalname} = home-manager.lib.homeManagerConfiguration {
 
           inherit pkgs;
 
