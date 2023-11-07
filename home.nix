@@ -30,17 +30,25 @@
     telegram-desktop
     tmux
     yt-dlp
+    xorg.xset
     zotero
   ];
 
-  xsession.enable = true;
+  xsession = {
+    enable = true;
+    initExtra = ''xset r rate 200 55'';
+  };
+
   services.kdeconnect = {
     enable = true;
     indicator = true;
   };
 
-  home.file = {
+  services.dunst = {
+    enable = true;
+  };
 
+  home.file = {
     ".gnupg/gpg.conf".text = ''
       use-agent
       pinentry-mode loopback
