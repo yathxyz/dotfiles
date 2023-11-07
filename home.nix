@@ -51,7 +51,7 @@ in
       use-agent
       pinentry-mode loopback
       '';
-    ".config/i3/config".text = builtins.readFile ./config/i3;
+    ".config/i3/config".text = builtins.readFile ./config/i3/config;
     ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
   };
 
