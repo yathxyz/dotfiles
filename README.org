@@ -1,0 +1,35 @@
+#+title: dotfiles
+
+* Summary
+A barebones config setup for my home directory.
+
+* Install
+0. Have nixOS with flakes enabled.
+
+1. In your configuration.nix add the following.
+
+#+begin_src nix
+  users.users.yournamehere = {
+    isNormalUser = true;
+    packages = with pkgs; [
+      home-manager
+    ];
+  };
+#+end_src
+
+2. Rebuild the system, then clone this repository.
+#+begin_src shell
+git clone https://www.github.com/yathxyz/dotfiles ~/.config/home-manager/
+#+end_src
+
+Edit the finalname attributes in flake.nix and home.nix to the username matching the added user in the configuration.nix file.
+
+Install the configuration.
+#+begin_src shell
+home-manager init --switch
+#+end_src
+
+* Purpose
+1. Avoid making my home directory a git repo.
+2. Home-manager allows for a declarative configuration. Each solution even if ugly works as self-documentation. The system state in the "realm" of my home directory becomes a lot harder to be hidden.
+3. Dotfiles can eventually be adapted according to hardware configuration.
