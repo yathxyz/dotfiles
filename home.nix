@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  finalname= "yanni";
+in
 {
-  home.username = "yanni";
-  home.homeDirectory = "/home/yanni";
+  home.username = finalname;
+  home.homeDirectory = "/home/${finalname}";
 
   nixpkgs.config.allowUnfree = true;
 
