@@ -34,11 +34,6 @@
     zotero
   ];
 
-  xsession = {
-    enable = true;
-    initExtra = ''xset r rate 200 55'';
-  };
-
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -53,6 +48,7 @@
       use-agent
       pinentry-mode loopback
       '';
+    ".config/i3/config".text = builtins.readFile ./config/i3;
   };
 
   home.sessionVariables = rec {
