@@ -4,7 +4,7 @@
 A barebones config setup for my home directory.
 
 ** Install
-1. Have nixOS with flakes enabled.
+Have nixOS with flakes enabled.
 
 *** Quick install (if home-manager is already installed)
 #+begin_src shell
