@@ -1,7 +1,8 @@
 #+title: dotfiles
 
-** Summary
+#+begin_src
 A barebones config setup for my home directory.
+#+end_src
 
 ** Install
 Have nixOS with flakes enabled.
