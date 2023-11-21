@@ -46,6 +46,7 @@ in
     enable = true;
   };
 
+
   home.file = {
     ".gnupg/gpg.conf".text = ''
       use-agent
@@ -66,7 +67,7 @@ in
     EDITOR = "nvim";
   };
 
-  programs.terminator.enable = true;
+  programs.kitty.enable = true;
   # TODO further configure the emacs module
 
   programs.emacs.enable = true;
