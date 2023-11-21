@@ -12,6 +12,7 @@ in
   home.packages = with pkgs; [
     brave
     busybox
+    ccls
     discord
     dconf
     feh
