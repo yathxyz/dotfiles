@@ -23,6 +23,7 @@ in
     htop
     libreoffice-fresh
     libsForQt5.okular
+    xp-pen-deco-01-v2-driver
     mpv
     nixfmt
     notmuch
