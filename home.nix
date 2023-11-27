@@ -10,6 +10,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    autorandr
     brave
     busybox
     ccls
