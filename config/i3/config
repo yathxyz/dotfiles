@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:monospace 12
+font pango:Fira Code Nerd Font 12
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -129,3 +129,5 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 bindsym $mod+Ctrl+semicolon exec i3lock --color=000000 & systemctl suspend
+
+exec xset r rate 200 55
