@@ -16,6 +16,7 @@
     let
       # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
+      myPackage = import ./etc/pkgs/godot4-mono/default.nix;
       pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev:
         let
           dataDir = "var/lib/xppend1v2";
@@ -51,7 +52,7 @@
         });
       finalname = "yanni";
     in {
-      packages.${system}.godot4-mono = import ./etc/pkgs/godot4-mono { inherit (nixpkgs) stdenv fetchurl lib; };
+      # packages.${system}.godot4-mono = import ./etc/pkgs/godot4-mono { inherit (nixpkgs) stdenv fetchurl lib; };
       homeConfigurations = {
         ${finalname} = home-manager.lib.homeManagerConfiguration {
 
