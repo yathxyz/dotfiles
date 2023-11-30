@@ -20,6 +20,7 @@ in
     gnupg
     gnuplot
     godot_4
+    godot4-mono
     htop
     libreoffice-fresh
     libsForQt5.okular
