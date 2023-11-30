@@ -51,6 +51,7 @@
         });
       finalname = "yanni";
     in {
+      packages.${system}.godot-4-mono = import ./etc/pkgs/godot-4-mono { inherit (nixpkgs) stdenv fetchurl; };
       homeConfigurations = {
         ${finalname} = home-manager.lib.homeManagerConfiguration {
 
