@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, godot, ... }:
 
 let
   finalname= "yanni";
@@ -9,7 +9,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     autorandr
     brave
     busybox
@@ -19,8 +19,7 @@ in
     feh
     gnupg
     gnuplot
-    godot_4
-    godot4-mono
+    #godot4-mono
     htop
     libreoffice-fresh
     libsForQt5.okular
@@ -39,7 +38,7 @@ in
     yt-dlp
     xorg.xset
     zotero
-  ];
+  ]) ++ [godot.legacyPackages.${pkgs.system}.godot4-mono];
 
   services.kdeconnect = {
     enable = true;

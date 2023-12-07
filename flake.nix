@@ -4,6 +4,7 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # godot.url = "github:nixos/nixpkgs/3e706574326e529fba9bbd2d2864666304ec85ac";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +17,7 @@
     let
       # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
-      myPackage = import ./etc/pkgs/godot4-mono/default.nix;
+      # myPackage = import ./etc/pkgs/godot4-mono;
       pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev:
         let
           dataDir = "var/lib/xppend1v2";
@@ -52,7 +53,7 @@
         });
       finalname = "yanni";
     in {
-      # packages.${system}.godot4-mono = import ./etc/pkgs/godot4-mono { inherit (nixpkgs) stdenv fetchurl lib; };
+      packages.${system}.godot4-mono = pkgs.callPackage ./etc/pkgs/godot4-mono {};
       homeConfigurations = {
         ${finalname} = home-manager.lib.homeManagerConfiguration {
 
