@@ -14,18 +14,19 @@ in
     brave
     busybox
     ccls
-    discord
     dconf
+    discord
     feh
+    gdb
     gnupg
     gnuplot
     godot_4
     htop
     libreoffice-fresh
     libsForQt5.okular
-    xp-pen-deco-01-v2-driver
     mpv
     nixfmt
+    nodejs_20
     notmuch
     pinentry
     pulseaudio
@@ -35,8 +36,9 @@ in
     steam
     telegram-desktop
     tmux
-    yt-dlp
     xorg.xset
+    xp-pen-deco-01-v2-driver
+    yt-dlp
     zotero
   ];
 
