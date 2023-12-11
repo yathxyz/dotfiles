@@ -7,7 +7,7 @@
 (setq doom-font (font-spec :family "Fira Code" :size 16))
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq doom-theme 'doom-ayu-dark)
+(setq doom-theme 'doom-oksolar-dark)
 
 (setq display-line-numbers-type 'relative)
 
