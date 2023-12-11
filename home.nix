@@ -10,6 +10,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    age
     autorandr
     brave
     busybox
@@ -33,6 +34,7 @@ in
     python3
     rclone
     signal-desktop
+    sops
     steam
     telegram-desktop
     tmux
