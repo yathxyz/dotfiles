@@ -23,6 +23,8 @@ in
     gnuplot
     godot_4
     htop
+    ispell
+    languagetool
     libreoffice-fresh
     libsForQt5.okular
     mpv
