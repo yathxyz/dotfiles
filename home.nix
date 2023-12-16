@@ -63,9 +63,6 @@ in
       '';
     ".config/i3/config".text = builtins.readFile ./config/i3/config;
     ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
-    ".config/doom/init.el".text = builtins.readFile ./config/doom/init.el;
-    ".config/doom/config.el".text = builtins.readFile ./config/doom/config.el;
-    ".config/doom/packages.el".text = builtins.readFile ./config/doom/packages.el;
   };
 
   home.sessionVariables = rec {
