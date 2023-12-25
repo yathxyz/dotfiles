@@ -18,6 +18,7 @@ in
     dconf
     discord
     feh
+    findutils
     gdb
     gnupg
     gnuplot
@@ -86,6 +87,10 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+  };
+
+  programs.fzf = {
+    enable = true;
   };
 
   #programs.dconf.enable = true;
