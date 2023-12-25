@@ -41,6 +41,7 @@ in
     steam
     telegram-desktop
     tmux
+    xclip
     xorg.xset
     xp-pen-deco-01-v2-driver
     yt-dlp
@@ -77,7 +78,11 @@ in
     EDITOR = "nvim";
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    font.name = "JetBrainsMono Nerd Font";
+  };
+
   # TODO further configure the emacs module
 
   programs.emacs.enable = true;
