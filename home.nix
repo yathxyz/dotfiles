@@ -13,12 +13,11 @@ in
     age
     autorandr
     brave
-    busybox
     ccls
+    coreutils-full
     dconf
     discord
     feh
-    findutils
     gdb
     gnupg
     gnuplot
