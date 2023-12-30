@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
-let
-  finalname= "yanni";
-in
-{
+let finalname = "yanni";
+in {
   home.username = finalname;
   home.homeDirectory = "/home/${finalname}";
 
@@ -52,16 +50,13 @@ in
     indicator = true;
   };
 
-  services.dunst = {
-    enable = true;
-  };
-
+  services.dunst.enable = true;
 
   home.file = {
     ".gnupg/gpg.conf".text = ''
       use-agent
       pinentry-mode loopback
-      '';
+    '';
     ".config/i3/config".text = builtins.readFile ./config/i3/config;
     ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
   };
@@ -93,20 +88,19 @@ in
     vimdiffAlias = true;
   };
 
-  programs.fzf = {
-    enable = true;
-  };
+  programs.fzf.enable = true;
 
-  #programs.dconf.enable = true;
   programs.zsh = {
     enable = true;
     shellAliases = {
-      rr = "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | ${pkgs.bash}/bin/bash";
+      rr =
+        "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | ${pkgs.bash}/bin/bash";
     };
+
     oh-my-zsh = {
       enable = true;
       theme = "bira";
-      plugins = [ "git" "sudo"];
+      plugins = [ "git" "sudo" ];
       extraConfig = "${pkgs.pfetch}/bin/pfetch";
     };
   };
@@ -128,17 +122,14 @@ in
 
     # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
     # something
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
 
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.stateVersion = "23.05"; # Check home manager release notes before updating
+  home.stateVersion =
+    "23.05"; # Check home manager release notes before updating
 }
