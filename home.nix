@@ -98,7 +98,11 @@ in {
 
   programs.kitty = {
     enable = true;
-    font.name = "JetBrainsMono Nerd Font";
+    theme = "Solarized Dark";
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 12;
+    };
   };
 
   # TODO further configure the emacs module
