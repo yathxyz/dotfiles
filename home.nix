@@ -105,6 +105,13 @@ in {
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # TODO further configure the emacs module
 
   programs.emacs.enable = true;
