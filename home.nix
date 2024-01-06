@@ -10,6 +10,7 @@ in {
   home.packages = with pkgs; [
     age
     autorandr
+    awscli2
     brave
     ccls
     coreutils-full
