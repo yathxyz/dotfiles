@@ -1,0 +1,5 @@
+
+[[language]]
+name = "yaml"
+formatter = { command = "prettier" }
+auto-format = true
