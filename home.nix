@@ -20,6 +20,7 @@ in {
     gnupg
     gnuplot
     godot_4
+    helix
     htop
     ispell
     languagetool
@@ -83,6 +84,10 @@ in {
     '';
     ".config/i3/config".text = builtins.readFile ./config/i3/config;
     ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
+    ".config/helix/config.toml".text =
+      builtins.readFile ./config/helix/config.toml;
+    ".config/helix/languages.toml".text =
+      builtins.readFile ./config/helix/languages.toml;
   };
 
   home.sessionVariables = rec {
