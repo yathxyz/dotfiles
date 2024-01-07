@@ -145,8 +145,7 @@ in {
       extraConfig = ''
         ${pkgs.pfetch}/bin/pfetch
 
-        # Add dotnet tools into PATH. They will have to be installed imperivately through the dotnet CLI command
-        export PATH="$PATH:/home/${finalname}/.dotnet/tools"
+        # TODO Need to find a way to get csharpier declaratively installed along with .NET LSP
       '';
     };
   };
