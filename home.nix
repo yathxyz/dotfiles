@@ -146,10 +146,7 @@ in {
         ${pkgs.pfetch}/bin/pfetch
 
         # Add dotnet tools into PATH. They will have to be installed imperivately through the dotnet CLI command
-        cat << \EOF >> ~/.bash_profile
-        # Add .NET Core SDK tools
-        export PATH="$PATH:/home/yanni/.dotnet/tools"
-        EOF
+        export PATH="$PATH:/home/${finalname}/.dotnet/tools"
       '';
     };
   };
