@@ -1,0 +1,88 @@
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
+
+"# Plugins
+set easymotion
+set NERDTree
+set surround
+set commentary
+set ReplaceWithRegister
+set argtextobj
+set highlightedyank
+set vim-paragraph-motion
+set textobj-indent
+
+"# Plugin Settings
+let g:EasyMotion_smartcase = 1
+let mapleader = "\<Space>"
+
+"# Settings
+set scrolloff=5
+set incsearch
+
+"# Idea settings
+set ideajoin
+set idearefactormode=select
+set ideamarks
+set ideaput
+set ideavimsupport=dialog
+
+"# Mappings
+"## EasyMotion
+nmap , <Plug>(easymotion-s)
+map s <Plug>(easymotion-f)
+
+"### JK motions: Line motions
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+
+"## IdeaVim
+map <leader>r <Action>(RenameElement)
+
+map <leader>d <Action>(Debug)
+map <leader>c <Action>(Stop)
+
+map <leader>e <Action>(GotoNextError)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>f <Action>(RecentFiles)
+
+map <leader>p <Action>(PinActiveEditorTab)
+
+map <leader>u <Action>(FindUsages)
+map <leader>i <Action>(GotoImplementation)
+map <leader>a <Action>(Run)
+map <leader>s <Action>(RunClass)
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+"### Distraction free mode
+
+"### Navigation
+map ]] <Action>(MethodDown)
+map [[ <Action>(MethodUp)
+map gd <Action>(GotoDeclaration)
+map gs <Action>(GotoSuperMethod)
+map gi <Action>(GotoImplementation)
+map gc <Action>(JumpToLastChange)
+map gb <Action>(Back)
+map <leader>] <Action>(Tree-selectNext)
+
+map gi <Action>(GotoImplementation)
+
+"# Declaration jumping
+nmap <C-t> <Action>(Back)
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
+""" Running and Debugging
+nnoremap ,r <Action>ContextRun
+nnoremap ,c <Action>RunClass
+nnoremap ,f <Action>ChooseRunConfiguration
+nnoremap ,t <Action>ActivateRunToolWindow
+nnoremap ,u <Action>Rerun
+nnoremap ,f <Action>RerunFailedTests
+nnoremap ,b <Action>ToggleLineBreakpoint
+nnoremap ,d <Action>ContextDebug
+nnoremap ,n <Action>ActivateDebugToolWindow
