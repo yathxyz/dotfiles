@@ -89,7 +89,7 @@ in {
       builtins.readFile ./config/helix/config.toml;
     ".config/helix/languages.toml".text =
       builtins.readFile ./config/helix/languages.toml;
-    ".ideavimrm".text = builtins.readFile ./config/rider/ideavimrc;
+    ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
   };
 
   home.sessionVariables = rec {
