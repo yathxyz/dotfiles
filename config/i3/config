@@ -115,7 +115,7 @@ bindsym $mod+r mode "resize"
 
 bar {
         status_command i3status
-	mode hide
+        mode hide
 }
 
 bindsym $mod+m bar mode toggle
