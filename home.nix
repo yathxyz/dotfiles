@@ -90,6 +90,7 @@ in {
     ".config/helix/languages.toml".text =
       builtins.readFile ./config/helix/languages.toml;
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
+    ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
   };
 
   home.sessionVariables = rec {
