@@ -107,9 +107,7 @@ in {
   programs.firefox = {
     enable = true;
     profiles."default" = {
-
       search.default = "DuckDuckGo";
-
       containers = {
         dangerous = {
           color = "red";
