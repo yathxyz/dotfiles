@@ -1,0 +1,26 @@
+general {
+        interval = 5
+}
+
+order += "disk /"
+order += "memory"
+order += "load"
+order += "tztime local"
+
+tztime local {
+        format = "Datetime: %Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "%5min"
+}
+
+memory {
+        format = "RAM used: %used"
+        threshold_degraded = "10%"
+        format_degraded = "WARNING => RAM remaining: %free"
+}
+
+disk "/" {
+        format = "Space remaining: %free"
+}
