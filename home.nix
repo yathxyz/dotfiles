@@ -104,6 +104,28 @@ in {
     EDITOR = "nvim";
   };
 
+  programs.firefox = {
+    enable = true;
+    profiles."default" = {
+
+      search.default = "DuckDuckGo";
+
+      containers = {
+        dangerous = {
+          color = "red";
+          icon = "fruit";
+          id = 2;
+        };
+        shopping = {
+          color = "blue";
+          icon = "cart";
+          id = 1;
+        };
+      };
+    };
+
+  };
+
   programs.kitty = {
     enable = true;
     theme = "Solarized Dark";
