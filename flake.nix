@@ -56,6 +56,11 @@
           system = "x86_64-linux";
           modules = [ ./hosts/battlestation/configuration.nix ];
         };
+
+        surface = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/surface/configuration.nix ];
+        };
       };
       homeConfigurations = {
         ${finalname} = home-manager.lib.homeManagerConfiguration {
