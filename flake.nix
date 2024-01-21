@@ -51,6 +51,12 @@
         });
       finalname = "yanni";
     in {
+      nixosConfigurations = {
+        battlestation = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/battlestation/configuration.nix ];
+        };
+      };
       homeConfigurations = {
         ${finalname} = home-manager.lib.homeManagerConfiguration {
 
