@@ -1,5 +1,5 @@
 {
-  description = "home manager configuration for dotfiles";
+  description = "Flake for opinionated digital work environments";
 
   inputs = {
 
