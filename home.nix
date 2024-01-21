@@ -24,10 +24,12 @@ in {
     helix
     htop
     ispell
+    isync
     languagetool
     libreoffice-fresh
     libsForQt5.okular
     mpv
+    mu
     nixfmt
     nodejs_20
     notmuch
