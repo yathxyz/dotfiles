@@ -10,6 +10,7 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -17,9 +18,9 @@
 
   outputs = { nixpkgs, home-manager, nix-colors, ... }@inputs:
     let
+      defaultName = "yanni";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      finalname = "yanni";
     in {
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
@@ -33,13 +34,18 @@
           modules = [ ./hosts/surface ];
         };
       };
+
       homeConfigurations = {
-        ${finalname} = home-manager.lib.homeManagerConfiguration {
+        ${defaultName} = home-manager.lib.homeManagerConfiguration {
 
           inherit pkgs;
 
           modules = [ ./home.nix ];
-          extraSpecialArgs = { inherit nix-colors; };
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+            inherit defaultName;
+          };
         };
       };
     };
