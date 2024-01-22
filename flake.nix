@@ -26,12 +26,12 @@
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/battlestation/configuration.nix ];
+          modules = [ ./hosts/battlestation ];
         };
 
         surface = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/surface/configuration.nix ];
+          modules = [ ./hosts/surface ];
         };
       };
       homeConfigurations = {
