@@ -2,3 +2,6 @@ creation_rules:
   - path_regex: secrets.yaml$
     age: >-
       age1v3dmhnzu4k4v24tr6lcc6zlchm752ud52urmtfw79mdtu9haddjq5h2l6p
+  - filename_regex: 'rcloneconf$'
+    age: >-
+      age1v3dmhnzu4k4v24tr6lcc6zlchm752ud52urmtfw79mdtu9haddjq5h2l6p

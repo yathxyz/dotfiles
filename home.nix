@@ -7,14 +7,21 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # NB: Restart sops-nix.service after every edit here when switching
+  # to a new home-manager generation
   sops = {
     age.keyFile = "/home/${defaultName}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
-    secrets.test = { path = "/home/${defaultName}/test"; };
+
+    # This hack is absolutely demented
+    secrets.rcloneconf = {
+      sopsFile = ./rcloneconf;
+      format = "binary";
+      path = "/home/${defaultName}/.config/rclone/rclone.conf";
+    };
   };
 
   home.packages = with pkgs; [
-    age
     autorandr
     awscli2
     brave
