@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, defaultName, ... }:
 
-let finalname = "yanni";
-in {
-  home.username = finalname;
-  home.homeDirectory = "/home/${finalname}";
+{
+  imports = [ inputs.sops-nix.homeManagerModules.sops ];
+  home.username = defaultName;
+  home.homeDirectory = "/home/${defaultName}";
 
   nixpkgs.config.allowUnfree = true;
+
+  sops = {
+    age.keyFile = "/home/${defaultName}/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets/secrets.yaml;
+  };
 
   home.packages = with pkgs; [
     age
