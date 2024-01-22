@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
+  ];
+
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/home/yanni/.config/sops/age/keys.txt";
+
+  sops.secrets.something = { owner = "yanni"; };
 
   # Enable flakes and the new command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -28,15 +35,13 @@
   };
 
   # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
+  boot.initrd.secrets = { "/crypto_keyfile.bin" = null; };
 
   # Networking
   networking.hostName = "battlestation"; # Define your hostname.
   services.openssh.enable = true;
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [];
+  networking.firewall.allowedTCPPorts = [ ];
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Dublin";
@@ -61,9 +66,7 @@
     enable = true;
     displayManager.lightdm.enable = true;
 
-    desktopManager = {
-      xterm.enable = false;
-    };
+    desktopManager = { xterm.enable = false; };
 
     displayManager = {
       defaultSession = "none+i3";
@@ -76,20 +79,13 @@
     windowManager.i3 = {
       enable = true;
 
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-      ];
+      extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
     };
   };
 
   services.dbus.enable = true;
 
-  services.xserver = {
-    layout = "us,gr";
-  };
+  services.xserver = { layout = "us,gr"; };
 
   hardware.opengl = {
     enable = true;
@@ -97,7 +93,7 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     nvidiaSettings = true;
@@ -127,9 +123,7 @@
     shell = pkgs.zsh;
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      home-manager
-    ];
+    packages = with pkgs; [ home-manager ];
   };
 
   programs.kdeconnect.enable = true;
@@ -176,8 +170,7 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
-  ]; 
-
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
