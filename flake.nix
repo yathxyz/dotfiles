@@ -17,7 +17,6 @@
 
   outputs = { nixpkgs, home-manager, nix-colors, ... }@inputs:
     let
-      # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       finalname = "yanni";
