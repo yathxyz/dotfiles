@@ -10,9 +10,12 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
-  outputs = { nixpkgs, home-manager, nix-colors, ... }:
+  outputs = { nixpkgs, home-manager, nix-colors, ... }@inputs:
     let
       # TODO make this ISA agnostic - it should work for now
       system = "x86_64-linux";
@@ -54,6 +57,7 @@
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [ ./hosts/battlestation/configuration.nix ];
         };
 
