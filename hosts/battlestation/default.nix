@@ -3,15 +3,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
   ];
-
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-
-  sops.age.keyFile = "/home/yanni/.config/sops/age/keys.txt";
-
-  sops.secrets.something = { owner = "yanni"; };
 
   # Enable flakes and the new command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
