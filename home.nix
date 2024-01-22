@@ -9,7 +9,7 @@
 
   sops = {
     age.keyFile = "/home/${defaultName}/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = ./sops.yaml;
     secrets.test = { path = "/home/${defaultName}/test"; };
   };
 
