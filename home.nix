@@ -22,6 +22,10 @@
 
     secrets."OPENAI_API_KEY".path = "%r/secrets/OPENAI_API_KEY";
     secrets."GITHUB_TOKEN".path = "%r/secrets/GITHUB_TOKEN";
+<<<<<<< HEAD
+=======
+    secrets."BRAVE_SYNC_PHRASE".path = "%r/secrets/BRAVE_SYNC_PHRASE";
+>>>>>>> 56eebd3 (Fix brave secret name)
   };
 
   home.packages = with pkgs; [
