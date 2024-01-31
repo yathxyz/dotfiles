@@ -22,7 +22,6 @@
 
     secrets."OPENAI_API_KEY".path = "%r/secrets/OPENAI_API_KEY";
     secrets."GITHUB_TOKEN".path = "%r/secrets/GITHUB_TOKEN";
-    secrets."BRAVE_SYNC_KEY".path = "%r/secrets/BRAVE_SYNC_KEY";
   };
 
   home.packages = with pkgs; [
