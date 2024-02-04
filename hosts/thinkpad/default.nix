@@ -121,8 +121,6 @@
     coreutils-full
     curl
     direnv
-    texlive.combined.scheme-full
-    texlab
     fd
     gcc
     git
