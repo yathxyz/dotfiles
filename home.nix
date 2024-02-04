@@ -45,18 +45,13 @@
     libreoffice-fresh
     libsForQt5.okular
     mpv
-    mu
     nixfmt
     nodejs_20
-    notmuch
     pinentry
-    pulseaudio
-    python3
     rclone
     signal-desktop
     sops
     steam
-    telegram-desktop
     tmux
     xclip
     xorg.xset
