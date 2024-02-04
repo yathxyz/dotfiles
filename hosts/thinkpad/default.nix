@@ -76,7 +76,7 @@
 
   services.dbus.enable = true;
 
-  services.xserver = { layout = "us,gr"; };
+  services.xserver.xkb.layout = "us,gr";
 
   hardware.opengl = {
     enable = true;
