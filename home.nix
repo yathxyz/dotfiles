@@ -48,6 +48,7 @@
     nixfmt
     nodejs_20
     pinentry
+    pulseaudio
     rclone
     signal-desktop
     sops
