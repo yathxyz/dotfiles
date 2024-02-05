@@ -28,6 +28,7 @@
     autorandr
     awscli2
     brave
+    brightnessctl
     ccls
     coreutils-full
     dconf
@@ -42,6 +43,7 @@
     ispell
     isync
     languagetool
+    libnotify
     libreoffice-fresh
     libsForQt5.okular
     mpv
