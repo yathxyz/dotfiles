@@ -6,6 +6,10 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id xsetroot -solid black
 
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "brightnessctl set +10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 10-; notify-send 'brightness down'"
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
