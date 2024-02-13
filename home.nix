@@ -51,6 +51,7 @@
     nodejs_20
     pinentry
     pulseaudio
+    python3
     rclone
     signal-desktop
     sops
