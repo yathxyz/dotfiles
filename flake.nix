@@ -31,6 +31,12 @@
           modules = [ ./hosts/battlestation ];
         };
 
+        staging = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/staging ];
+        };
+
         surface = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./hosts/surface ];
