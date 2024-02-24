@@ -8,20 +8,18 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/47700642-60f1-4cdb-9852-419b00f4d38a";
+    { device = "/dev/disk/by-uuid/9aebe0ff-299b-481b-b3c2-8a344b94612f";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-93af9908-8602-4096-955d-8f134397c132".device = "/dev/disk/by-uuid/93af9908-8602-4096-955d-8f134397c132";
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2CBE-6590";
+    { device = "/dev/disk/by-uuid/0C73-4EAB";
       fsType = "vfat";
     };
 
@@ -32,7 +30,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp2s0f0u2.useDHCP = lib.mkDefault true;
 
