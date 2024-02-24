@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -26,11 +27,11 @@
   time.timeZone = "Europe/Dublin";
 
   # Select internationalisation properties.
-  #i18n.defaultLocale = "en_US.UTF-8";
-  #console = {
-  #  font = "Lat2-Terminus16";
-  #  useXkbConfig = true; # use xkb.options in tty.
-  #};
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    useXkbConfig = true; # use xkb.options in tty.
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -54,6 +55,11 @@
     isNormalUser = true;
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = { "yanni" = import ./home.nix; };
   };
 
   # List packages installed in system profile. To search, run:
