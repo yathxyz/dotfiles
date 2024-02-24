@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -20,6 +21,22 @@
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = { 
+      "yanni" = {
+        home.sessionVariables = {
+	  WORKDIR = "$HOME/work/";
+	  ZOTERODIR = "$HOME/Zotero/";
+	  STUFFDIR = "$HOME/stuff/";
+	  EDITOR = "nvim";
+        };
+
+	home.stateVersion = "23.05";
+      };
+    };
+  };
 
   networking.hostName = "battlestation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
