@@ -27,11 +27,11 @@
   time.timeZone = "Europe/Dublin";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+  #i18n.defaultLocale = "en_US.UTF-8";
+  #console = {
+  #  font = "Lat2-Terminus16";
+  #  useXkbConfig = true; # use xkb.options in tty.
+  #};
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -64,7 +64,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ wget coreutils-full ];
+  environment.systemPackages = with pkgs; [ wget coreutils-full git ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
