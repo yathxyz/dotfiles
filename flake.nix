@@ -35,7 +35,10 @@
         staging = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/staging ];
+          modules = [ 
+	    ./hosts/staging 
+	    inputs.home-manager.nixosModules.default
+	  ];
         };
 
         surface = nixpkgs.lib.nixosSystem {
