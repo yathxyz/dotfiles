@@ -18,6 +18,7 @@
     enable = true;
     device = "nodev";
     efiSupport = true;
+    useOSProber = true;
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -145,6 +146,7 @@
   #  wget
     neovim
     git
+    emacs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
