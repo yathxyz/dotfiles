@@ -160,6 +160,8 @@
     enableSSHSupport = true;
   };
 
+  programs.steam.enable = true;
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
