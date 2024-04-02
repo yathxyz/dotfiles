@@ -9,6 +9,29 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      steam = prev.steam.override {
+        extraPkgs = pkgs:
+          with pkgs; [
+            ffmpeg-full
+            cups
+            fluidsynth
+            gtk3
+            pango
+            cairo
+            atk
+            zlib
+            glib
+            gdk-pixbuf
+          ];
+        extraArgs = "-console";
+        extraEnv.ROBUST_SOUNDFONT_OVERRIDE =
+          "${prev.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2";
+      };
+    })
+  ];
+
   # Bootloader.
   boot.loader.grub = {
     enable = true;
@@ -35,6 +58,8 @@
 #      };
 #    };
 #  };
+
+  virtualisation.docker.enable = true;
 
   networking.hostName = "battlestation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -86,7 +111,14 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome = {
+    enable = true;
+    extraGSettingsOverrides = ''
+      [org.gnome.desktop.background]
+      picture-options='none'
+      primary-color='#000000'
+    '';
+  };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -118,7 +150,7 @@
   users.users.yanni = {
     isNormalUser = true;
     description = "Ioannis Eleftheriou";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       signal-desktop
@@ -171,6 +203,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
