@@ -119,28 +119,7 @@
     EDITOR = "nvim";
   };
 
-  programs.firefox = {
-    enable = true;
-    profiles."default" = {
-      search = {
-        default = "DuckDuckGo";
-        force = true;
-      };
-      containers = {
-        dangerous = {
-          color = "red";
-          icon = "fruit";
-          id = 2;
-        };
-        shopping = {
-          color = "blue";
-          icon = "cart";
-          id = 1;
-        };
-      };
-    };
-
-  };
+  programs.firefox.enable = true;
 
   programs.kitty = {
     enable = true;
