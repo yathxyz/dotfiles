@@ -29,7 +29,7 @@
     libreoffice-fresh
     libsForQt5.okular
     mpv
-    nixfmt
+    nixfmt-classic
     nodejs_20
     pinentry
     pulseaudio
