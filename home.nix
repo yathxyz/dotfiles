@@ -1,28 +1,10 @@
 { inputs, config, pkgs, defaultName, ... }:
 
 {
-  imports = [ inputs.sops-nix.homeManagerModules.sops ];
   home.username = defaultName;
   home.homeDirectory = "/home/${defaultName}";
 
   nixpkgs.config.allowUnfree = true;
-
-  # NB: Restart sops-nix.service after every edit here when switching
-  # to a new home-manager generation
-  sops = {
-    age.keyFile = "/home/${defaultName}/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets.yaml;
-
-    # This hack is absolutely demented
-    secrets.rcloneconf = {
-      sopsFile = ./rcloneconf;
-      format = "binary";
-      path = "/home/${defaultName}/.config/rclone/rclone.conf";
-    };
-
-    secrets."OPENAI_API_KEY".path = "%r/secrets/OPENAI_API_KEY";
-    secrets."GITHUB_TOKEN".path = "%r/secrets/GITHUB_TOKEN";
-  };
 
   home.packages = with pkgs; [
     autorandr
