@@ -21,9 +21,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-  };
+  boot = { kernelPackages = pkgs.linuxPackages_latest; };
 
   # TODO Setup keyfile
   # boot.initrd.secrets = { "/crypto_keyfile.bin" = null; };
@@ -83,6 +81,10 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  # Bluetooth settings
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
