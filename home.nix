@@ -5,11 +5,9 @@
   home.homeDirectory = "/home/yanni";
 
   home.packages = with pkgs; [
-    autorandr
     awscli2
     brave
     brightnessctl
-    ccls
     coreutils-full
     dconf
     discord
@@ -22,8 +20,6 @@
     isync
     languagetool
     libnotify
-    libreoffice-fresh
-    libsForQt5.okular
     mpv
     nixfmt-classic
     nodejs_20
@@ -125,20 +121,20 @@
     style.package = pkgs.adwaita-qt;
   };
 
-  #gtk = {
-  #  enable = true;
-  #  cursorTheme.package = pkgs.bibata-cursors;
-  #  cursorTheme.name = "Bibata-Modern-Ice";
+  gtk = {
+    enable = true;
+    cursorTheme.package = pkgs.bibata-cursors;
+    cursorTheme.name = "Bibata-Modern-Ice";
 
-  #  theme.package = pkgs.adw-gtk3;
-  #  theme.name = "adw-gtk3";
+    theme.package = pkgs.adw-gtk3;
+    theme.name = "adw-gtk3";
 
-  #  # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
-  #  # something
-  #  gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+    # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
+    # something
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
 
-  #  gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
-  #};
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
