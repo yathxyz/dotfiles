@@ -17,8 +17,6 @@
     gdb
     gnupg
     gnuplot
-    godot_4
-    helix
     htop
     ispell
     isync
@@ -34,7 +32,6 @@
     rclone
     signal-desktop
     sops
-    steam
     tmux
     xclip
     xorg.xset
@@ -80,10 +77,6 @@
     '';
     ".config/i3/config".text = builtins.readFile ./config/i3/config;
     #".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
-    ".config/helix/config.toml".text =
-      builtins.readFile ./config/helix/config.toml;
-    ".config/helix/languages.toml".text =
-      builtins.readFile ./config/helix/languages.toml;
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
   };
