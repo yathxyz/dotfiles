@@ -17,7 +17,9 @@
       defaultName = "yanni";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      overlays = import ./overlays.nix;
     in {
+      overlays.steamOverlay = overlays.steamOverlay;
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
