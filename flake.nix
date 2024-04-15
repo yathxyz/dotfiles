@@ -10,16 +10,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-colors.url = "github:misterio77/nix-colors";
-
   };
 
-  outputs = { nixpkgs, home-manager, nix-colors, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux";
@@ -59,7 +52,6 @@
           modules = [ ./home.nix ];
           extraSpecialArgs = {
             inherit inputs;
-            inherit nix-colors;
             inherit defaultName;
           };
         };
