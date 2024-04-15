@@ -28,9 +28,7 @@
         staging = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ 
-	    ./hosts/staging 
-	  ];
+          modules = [ ./hosts/staging ];
         };
 
         surface = nixpkgs.lib.nixosSystem {
@@ -40,7 +38,15 @@
 
         thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/thinkpad home-manager.nixosModules.home-manager { home-manager.useGlobalPkgs = true; home-manager.useUserPackages = true; home-manager.users.yanni = import ./home.nix;  } ];
+          modules = [
+            ./hosts/thinkpad
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home.nix;
+            }
+          ];
         };
       };
 
