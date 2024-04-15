@@ -1,10 +1,8 @@
-{ inputs, config, pkgs, defaultName, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
-  home.username = defaultName;
-  home.homeDirectory = "/home/${defaultName}";
-
-  nixpkgs.config.allowUnfree = true;
+  home.username = "yanni";
+  home.homeDirectory = "/home/yanni";
 
   home.packages = with pkgs; [
     autorandr
@@ -51,29 +49,29 @@
 
   services.dunst.enable = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      steam = prev.steam.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            ffmpeg-full
-            cups
-            fluidsynth
-            gtk3
-            pango
-            cairo
-            atk
-            zlib
-            glib
-            gdk-pixbuf
-          ];
-        extraArgs = "-console";
-        extraEnv.ROBUST_SOUNDFONT_OVERRIDE =
-          "${prev.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2";
-      };
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #    steam = prev.steam.override {
+  #      extraPkgs = pkgs:
+  #        with pkgs; [
+  #          ffmpeg-full
+  #          cups
+  #          fluidsynth
+  #          gtk3
+  #          pango
+  #          cairo
+  #          atk
+  #          zlib
+  #          glib
+  #          gdk-pixbuf
+  #        ];
+  #      extraArgs = "-console";
+  #      extraEnv.ROBUST_SOUNDFONT_OVERRIDE =
+  #        "${prev.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2";
+  #    };
 
-    })
-  ];
+  #  })
+  #];
 
   home.file = {
     ".gnupg/gpg.conf".text = ''
@@ -81,7 +79,7 @@
       pinentry-mode loopback
     '';
     ".config/i3/config".text = builtins.readFile ./config/i3/config;
-    ".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
+    #".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
     ".config/helix/config.toml".text =
       builtins.readFile ./config/helix/config.toml;
     ".config/helix/languages.toml".text =
@@ -158,20 +156,20 @@
     style.package = pkgs.adwaita-qt;
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
+  #gtk = {
+  #  enable = true;
+  #  cursorTheme.package = pkgs.bibata-cursors;
+  #  cursorTheme.name = "Bibata-Modern-Ice";
 
-    theme.package = pkgs.adw-gtk3;
-    theme.name = "adw-gtk3";
+  #  theme.package = pkgs.adw-gtk3;
+  #  theme.name = "adw-gtk3";
 
-    # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
-    # something
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+  #  # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
+  #  # something
+  #  gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
 
-    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
-  };
+  #  gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
