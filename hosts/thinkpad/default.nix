@@ -123,12 +123,14 @@
     coreutils-full
     curl
     direnv
-    fd
     gcc
+    feh
+    htop
     git
     gnumake
     libtool
     perl
+    brightnessctl
     ripgrep
     sqlite
     wget
@@ -145,6 +147,7 @@
 
   fonts.packages = with pkgs; [
     nerdfonts
+    comic-mono
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
