@@ -7,15 +7,10 @@
   home.packages = with pkgs; [
     awscli2
     brave
-    brightnessctl
-    coreutils-full
     dconf
     discord
-    feh
-    gdb
+    fd
     gnupg
-    gnuplot
-    htop
     ispell
     isync
     languagetool
@@ -26,6 +21,7 @@
     pinentry
     pulseaudio
     rclone
+    ripgrep
     signal-desktop
     sops
     tmux
