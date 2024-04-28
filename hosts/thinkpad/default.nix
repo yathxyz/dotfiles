@@ -136,14 +136,18 @@
     gcc
     git
     gnumake
+    gnupg-pkcs11-scd
     htop
+    keepassxc
     libtool
     nh
+    pcsclite
     perl
     ripgrep
     sqlite
     wget
     yubikey-manager
+    yubikey-personalization
   ];
 
   environment.sessionVariables = rec {
