@@ -94,10 +94,10 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  security.pam.services = {
-    login.u2fAuth = true;
-    sudo.u2fAuth = true;
-  };
+  # security.pam.services = {
+  #   login.u2fAuth = true;
+  #   sudo.u2fAuth = true;
+  # };
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
@@ -143,6 +143,7 @@
     ripgrep
     sqlite
     wget
+    yubikey-manager
   ];
 
   environment.sessionVariables = rec {
