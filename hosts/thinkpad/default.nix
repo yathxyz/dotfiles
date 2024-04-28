@@ -93,6 +93,14 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -119,18 +127,19 @@
   environment.systemPackages = with pkgs; [
     bc
     bison
+    brightnessctl
     cmake
     coreutils-full
     curl
     direnv
-    gcc
     feh
-    htop
+    gcc
     git
     gnumake
+    htop
     libtool
+    nh
     perl
-    brightnessctl
     ripgrep
     sqlite
     wget
@@ -138,6 +147,9 @@
 
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
+
+    # For nh
+    FLAKEREF = "$HOME/proj/dotfiles";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
