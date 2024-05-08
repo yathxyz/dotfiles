@@ -1,13 +1,9 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
-  # Enable flakes and the new command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  # Enable flakes and the new command-line tool nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Allow unfree packages (unfortunately)
   nixpkgs.config.allowUnfree = true;
 
@@ -53,23 +49,8 @@
 
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
-
-    desktopManager = { xterm.enable = false; };
-
-    displayManager = {
-      defaultSession = "none+i3";
-      autoLogin = {
-        enable = true;
-        user = "yanni";
-      };
-    };
-
-    windowManager.i3 = {
-      enable = true;
-
-      extraPackages = with pkgs; [ dmenu i3status i3lock i3blocks ];
-    };
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
   services.dbus.enable = true;
@@ -109,7 +90,6 @@
     pulse.enable = true;
   };
 
-  # Set up docker for containers
   virtualisation.docker.enable = true;
 
   # Don't forget to set a password with ‘passwd’.
@@ -118,7 +98,6 @@
     shell = pkgs.zsh;
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [ home-manager ];
   };
 
   programs.kdeconnect.enable = true;
@@ -141,6 +120,7 @@
     htop
     keepassxc
     libtool
+    neovim
     nh
     pcsclite
     perl
@@ -148,7 +128,6 @@
     sqlite
     wget
     yubikey-manager
-    yubikey-personalization
     yubikey-personalization-gui
   ];
 
@@ -164,19 +143,7 @@
     WORKDIR = "$HOME/work/";
   };
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-    comic-mono
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-  ];
+  fonts.packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

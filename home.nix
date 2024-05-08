@@ -8,7 +8,6 @@
     awscli2
     brave
     dconf
-    discord
     fd
     gnupg
     ispell
@@ -17,7 +16,6 @@
     libnotify
     mpv
     nixfmt-classic
-    nodejs_20
     pinentry
     pulseaudio
     rclone
@@ -30,11 +28,6 @@
     yt-dlp
     zotero
   ];
-
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
 
   services.dunst.enable = true;
 
@@ -62,24 +55,6 @@
 
   programs.firefox.enable = true;
 
-  programs.kitty = {
-    enable = true;
-    theme = "Solarized Dark";
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 12;
-    };
-  };
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
-
-  # TODO further configure the emacs module
-
   programs.emacs.enable = true;
 
   programs.neovim = {
@@ -97,39 +72,6 @@
       rr =
         "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | ${pkgs.bash}/bin/bash";
     };
-
-    oh-my-zsh = {
-      enable = true;
-      theme = "bira";
-      plugins = [ "git" "sudo" ];
-      extraConfig = ''
-        ${pkgs.pfetch}/bin/pfetch
-
-        # TODO Need to find a way to get csharpier declaratively installed along with .NET LSP
-      '';
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    style.name = "adwaita-dark";
-    style.package = pkgs.adwaita-qt;
-  };
-
-  gtk = {
-    enable = true;
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
-
-    theme.package = pkgs.adw-gtk3;
-    theme.name = "adw-gtk3";
-
-    # icky solution - maybe I could just tell gtk4 to just listen to gtk3 or
-    # something
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
-
-    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
   };
 
   # Let Home Manager install and manage itself.
