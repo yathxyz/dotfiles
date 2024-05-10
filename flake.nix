@@ -46,7 +46,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.yanni = import ./home.nix;
+              home-manager.users.yanni = import ./home/laptop.nix;
             }
           ];
         };
