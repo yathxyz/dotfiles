@@ -57,7 +57,7 @@
 
           inherit pkgs;
 
-          modules = [ ./home.nix ];
+          modules = [ ./home/minimal.nix ];
           extraSpecialArgs = {
             inherit inputs;
             inherit defaultName;
