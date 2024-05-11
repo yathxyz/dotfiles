@@ -3,7 +3,8 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # Enable flakes and the new command-line tool nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Enable flakes and the new command-line tool 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Allow unfree packages (unfortunately)
   nixpkgs.config.allowUnfree = true;
 
