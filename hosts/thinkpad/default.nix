@@ -48,10 +48,26 @@
 
   environment.pathsToLink = [ "/libexec" ];
 
+  services.displayManager = {
+    defaultSession = "none+i3";
+  };
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+
+    desktopManager = {
+      xterm.enable = false;
+    };
+
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+	i3status
+	i3lock
+      ];
+    };
+
   };
 
   services.dbus.enable = true;
@@ -120,6 +136,7 @@
     gnupg-pkcs11-scd
     htop
     keepassxc
+    kitty
     libtool
     neovim
     nh
