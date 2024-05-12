@@ -38,6 +38,11 @@
           modules = [ ./hosts/surface ];
         };
 
+	grapes = nixpkgs.lib.nixosSystem { # Raspberry pi
+	  system = "aarch64-linux";
+	  modules = [ ./hosts/grapes ];
+	};
+
         thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
