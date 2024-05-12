@@ -25,6 +25,10 @@
 
   # Networking
   networking.hostName = "thinkpad"; # Define your hostname.
+  networking.hosts = {
+    "192.168.0.10" = [ "home.local" "grapes.local" ];
+  };
+
   services.openssh.enable = true;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
