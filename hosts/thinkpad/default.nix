@@ -28,28 +28,12 @@
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
   networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/Dublin";
-
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IE.UTF-8";
-    LC_IDENTIFICATION = "en_IE.UTF-8";
-    LC_MEASUREMENT = "en_IE.UTF-8";
-    LC_MONETARY = "en_IE.UTF-8";
-    LC_NAME = "en_IE.UTF-8";
-    LC_NUMERIC = "en_IE.UTF-8";
-    LC_PAPER = "en_IE.UTF-8";
-    LC_TELEPHONE = "en_IE.UTF-8";
-    LC_TIME = "en_IE.UTF-8";
-  };
-
   environment.pathsToLink = [ "/libexec" ];
 
   services.displayManager = {
     defaultSession = "none+i3";
   };
+
   services.xserver = {
     enable = true;
 
@@ -106,9 +90,6 @@
     pulse.enable = true;
   };
 
-  virtualisation.docker.enable = true;
-
-  # Don't forget to set a password with ‘passwd’.
   users.users.yanni = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -156,6 +137,7 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
+    EDITOR = "nvim";
 
     WORKDIR = "$HOME/work/";
   };
