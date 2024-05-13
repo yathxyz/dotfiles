@@ -3,11 +3,6 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # Enable flakes and the new command-line tool 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # Allow unfree packages (unfortunately)
-  nixpkgs.config.allowUnfree = true;
-
   # Bootloader.
   boot.loader.grub = {
     enable = true;
@@ -24,7 +19,7 @@
   # boot.initrd.secrets = { "/crypto_keyfile.bin" = null; };
 
   # Networking
-  networking.hostName = "thinkpad"; # Define your hostname.
+  networking.hostName = "thinkpad";
   networking.hosts = {
     "192.168.0.10" = [ "home.local" "grapes.local" ];
   };
