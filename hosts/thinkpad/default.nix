@@ -37,6 +37,12 @@
   services.xserver = {
     enable = true;
 
+    displayManager.autoLogin = {
+      enable = true;
+      user = "yanni";
+
+    };
+
     desktopManager = {
       xterm.enable = false;
     };
