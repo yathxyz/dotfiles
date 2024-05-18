@@ -62,9 +62,9 @@
 
   programs.zsh = {
     enable = true;
-    shellAliases = {
-      rr =
-        "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | ${pkgs.bash}/bin/bash";
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
     };
   };
 
