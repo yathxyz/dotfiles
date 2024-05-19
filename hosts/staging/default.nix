@@ -1,11 +1,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-#      inputs.home-manager.nixosModules.default
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #      inputs.home-manager.nixosModules.default
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -42,22 +41,22 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-#  home-manager = {
-#    extraSpecialArgs = { inherit inputs; };
-#    users = { 
-#      "yanni" = {
-#        home.sessionVariables = {
-#	  WORKDIR = "$HOME/work/";
-#	  ZOTERODIR = "$HOME/Zotero/";
-#	  STUFFDIR = "$HOME/stuff/";
-#	  EDITOR = "nvim";
-#
-#        };
-#
-#	home.stateVersion = "23.05";
-#      };
-#    };
-#  };
+  #  home-manager = {
+  #    extraSpecialArgs = { inherit inputs; };
+  #    users = { 
+  #      "yanni" = {
+  #        home.sessionVariables = {
+  #	  WORKDIR = "$HOME/work/";
+  #	  ZOTERODIR = "$HOME/Zotero/";
+  #	  STUFFDIR = "$HOME/stuff/";
+  #	  EDITOR = "nvim";
+  #
+  #        };
+  #
+  #	home.stateVersion = "23.05";
+  #      };
+  #    };
+  #  };
 
   virtualisation.docker.enable = true;
 
@@ -154,7 +153,7 @@
     packages = with pkgs; [
       firefox
       signal-desktop
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -169,11 +168,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    emacs
-    git
-  ];
+  environment.systemPackages = with pkgs; [ neovim emacs git ];
 
   environment.variables = {
     EDITOR = "nvim";

@@ -20,9 +20,7 @@
 
   # Networking
   networking.hostName = "thinkpad";
-  networking.hosts = {
-    "192.168.0.10" = [ "home.local" "grapes.local" ];
-  };
+  networking.hosts = { "192.168.0.10" = [ "home.local" "grapes.local" ]; };
 
   services.openssh.enable = true;
   networking.firewall.enable = true;
@@ -30,9 +28,7 @@
   networking.networkmanager.enable = true;
   environment.pathsToLink = [ "/libexec" ];
 
-  services.displayManager = {
-    defaultSession = "none+i3";
-  };
+  services.displayManager = { defaultSession = "none+i3"; };
 
   services.xserver = {
     enable = true;
@@ -43,18 +39,11 @@
 
     };
 
-    desktopManager = {
-      xterm.enable = false;
-    };
-
+    desktopManager = { xterm.enable = false; };
 
     windowManager.i3 = {
       enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-	i3status
-	i3lock
-      ];
+      extraPackages = with pkgs; [ dmenu i3status i3lock ];
     };
 
   };

@@ -2,14 +2,11 @@
   description = "Flake for opinionated digital work environments";
 
   nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
-
 
   inputs = {
 
@@ -19,7 +16,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
     # Would like to use it but I can't build things from source just yet
     emacs-overlay = {
@@ -55,16 +51,16 @@
           modules = [ ./hosts/surface ];
         };
 
-	grapes = nixpkgs.lib.nixosSystem { # Raspberry pi
-	  system = "aarch64-linux";
-	  modules = [ ./hosts/grapes ];
-	};
+        grapes = nixpkgs.lib.nixosSystem { # Raspberry pi
+          system = "aarch64-linux";
+          modules = [ ./hosts/grapes ];
+        };
 
         thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-	  specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; };
           modules = [
-	    ./modules/common.nix
+            ./modules/common.nix
             ./hosts/thinkpad
             home-manager.nixosModules.home-manager
             {
