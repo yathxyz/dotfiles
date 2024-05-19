@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, ... }: 
+{ inputs, pkgs, lib, config, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -10,7 +10,10 @@
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacsWithPackagesFromUsePackage { package = pkgs.emacs; config = ../home/config/emacs/init.el; };
+    package = pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacs;
+      config = ../home/config/emacs/init.el;
+    };
 
   };
   # Time and locale stuff
