@@ -1,6 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 {
+
   home.username = "yanni";
   home.homeDirectory = "/home/yanni";
 
@@ -38,6 +39,7 @@
     #".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
+    #".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
   };
 
 #  home.sessionVariables = rec {
@@ -53,7 +55,6 @@
 
   programs.firefox.enable = true;
 
-  programs.emacs.enable = true;
 
   programs.home-manager.enable = true;
 
