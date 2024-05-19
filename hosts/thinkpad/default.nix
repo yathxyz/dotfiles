@@ -108,20 +108,13 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    bc
-    bison
     brightnessctl
-    cmake
     coreutils-full
     curl
-    direnv
     feh
-    gcc
     git
-    gnumake
     gnupg-pkcs11-scd
     htop
-    keepassxc
     kitty
     libtool
     neovim
@@ -131,20 +124,16 @@
     ripgrep
     sqlite
     wget
-    yubikey-manager
-    yubikey-personalization-gui
   ];
 
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
-
     # For nh
     FLAKEREF = "$HOME/proj/dotfiles";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     EDITOR = "nvim";
-
     WORKDIR = "$HOME/work/";
   };
 
