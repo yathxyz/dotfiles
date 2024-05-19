@@ -1,6 +1,16 @@
 {
   description = "Flake for opinionated digital work environments";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
+
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,9 +20,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
+    # Would like to use it but I can't build things from source just yet
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-overlay, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux";

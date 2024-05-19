@@ -5,7 +5,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Set up complementary lisp machine
+  nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsWithPackagesFromUsePackage { package = pkgs.emacs; config = ../home/config/emacs/init.el; };
+
+  };
   # Time and locale stuff
 
   time.timeZone = "Europe/Dublin";
