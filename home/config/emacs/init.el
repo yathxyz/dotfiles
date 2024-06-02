@@ -146,6 +146,17 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+(use-package org-journal
+  :ensure t
+  :after org-roam
+  :config
+
+  (setq org-journal-dir (concat org-directory "journal/" ))
+
+  (setq org-journal-time-prefix "\n* "
+      org-journal-date-format "%a, %Y-%m-%d"
+      org-journal-file-format "%Y%m%d.org"
+      org-journal-date-prefix "#+TITLE: "))
 ;;; editable part of init.el ends here
 
 (custom-set-variables
