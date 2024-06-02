@@ -14,8 +14,12 @@
       package = pkgs.emacs;
       config = ../home/config/emacs/init.el;
     };
-
   };
+
+  services.syncthing = {
+    enable = true;
+  };
+
   # Time and locale stuff
 
   time.timeZone = "Europe/Dublin";
