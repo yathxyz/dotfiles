@@ -16,8 +16,11 @@
     };
   };
 
+  # TODO please make this actually reproducible
   services.syncthing = {
     enable = true;
+    user = "yanni";
+    configDir = "/home/yanni/.config/syncthing/";
   };
 
   # Time and locale stuff
