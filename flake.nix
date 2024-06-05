@@ -30,21 +30,26 @@
       defaultName = "yanni";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      overlays = import ./overlays.nix;
     in {
-      overlays.steamOverlay = overlays.steamOverlay;
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/battlestation ];
-        };
+          modules = [ 
+	    ./modules/common.nix
+        ./hosts/staging
 
-        staging = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/staging ];
-        };
+	    home-manager.nixosModules.home-manager
+	    {
+	      home-manager.useGlobalPkgs = true;
+	      home-manager.useUserPackages = true;
+	      home-manager.users.yanni = import ./home/laptop.nix;
+	    }
+
+        (import ./overlays/steam.nix)
+
+	  ];
+    };
 
         surface = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

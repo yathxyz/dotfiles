@@ -1,5 +1,8 @@
+{ config, pkgs, lib, ... }:
+
+
 {
-  steamOverlay = (final: prev: {
+  nixpkgs.overlays = [ (final: prev: {
     steam = prev.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
@@ -19,6 +22,6 @@
         "${prev.soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2";
     };
 
-  });
+  }) ];
 
 }
