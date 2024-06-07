@@ -126,7 +126,12 @@
     WORKDIR = "$HOME/work/";
   };
 
-  fonts.packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    comic-mono
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
