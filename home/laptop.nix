@@ -9,6 +9,7 @@
     awscli2
     dconf
     fd
+    emacs
     gnupg
     ispell
     isync
@@ -38,7 +39,7 @@
     #".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
-    ".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
+    #".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
     ".config/nvim/init.lua".text = builtins.readFile ./config/nvim/init.lua;
   };
 
