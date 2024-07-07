@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Would like to use it but I can't build things from source just yet
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -25,7 +30,7 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux";
@@ -70,6 +75,14 @@
             }
           ];
         };
+
+        spacestation-libra = nixpkgs.lib.nixosSystem {
+	  system = "x86_64-linux";
+	  modules = [
+	    ./hosts/spacestation-libra
+            agenix.nixosModules.default
+	  ];
+	};
       };
 
       homeConfigurations = {
