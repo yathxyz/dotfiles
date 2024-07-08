@@ -6,7 +6,6 @@
     user = "yanni";
     enable = true;
     configDir = "/home/yanni/.config/syncthing";
-    guiAddress = "0.0.0.0:8384";
   };
 
   age.identityPaths = ["/home/yanni/.ssh/id_ed25519"];
@@ -20,9 +19,9 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 80 443 39501 8384 ];
+    allowedTCPPorts = [ 22 80 443 ];
   };
-  environment.systemPackages = with pkgs; [ neovim git curl wget gnupg emacs comic-mono gcc tmux ];
+  environment.systemPackages = with pkgs; [ neovim git curl wget gnupg emacs comic-mono gcc ];
 
   virtualisation.podman.enable = true;
 
@@ -79,21 +78,8 @@
           proxy_set_header Connection "upgrade";
         '';
        };
-      locations."/graph" = {
-        proxyPass = "http://127.0.0.1:35901/";
-	proxyWebsockets = true;
-      };
-      locations."/syncthing" = {
-        proxyPass = "http://127.0.0.1:8384/";
-	proxyWebsockets = true;
-	extraConfig = ''
-	  proxy_set_header X-Real-IP $remote_addr;
-	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	  proxy_set_header X-Forwarded-Proto $scheme;
-	'';
       };
     };
-  };
 
   services.ttyd = {
     writeable = true;
