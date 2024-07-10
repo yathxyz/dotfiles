@@ -10,11 +10,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1718371084,
-        "narHash": "sha256-abpBi61mg0g+lFFU0zY4C6oP6fBwPzbHPKBGw676xsA=",
+        "lastModified": 1720546205,
+        "narHash": "sha256-boCXsjYVxDviyzoEyAk624600f3ZBo/DKtUdvMTpbGY=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "3a56735779db467538fb2e577eda28a9daacaca6",
+        "rev": "de96bd907d5fbc3b14fc33ad37d1b9a3cb15edc6",
         "type": "github"
       },
       "original": {
@@ -54,11 +54,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1720516213,
-        "narHash": "sha256-7rtoIV8IkqF5QLieMZkIiH+d/QTJnfoccxwFdH5ycek=",
+        "lastModified": 1720631485,
+        "narHash": "sha256-l/xKm4WtVw8zbVHTqeedFjNk52O943XxzVEGS+1Libs=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "bd468024d6ec4fcbddb65f3184a5bb19c4ebef82",
+        "rev": "9cb438ce0f2ac37fe8a9935a250e9b85581cd69d",
         "type": "github"
       },
       "original": {
@@ -158,12 +158,30 @@
         "type": "github"
       }
     },
+    "personal-shit": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720634322,
+        "narHash": "sha256-lJRxJ+x/wnxZoXzNLFt3wuQENEcoEF6ziYKyVx9hdqc=",
+        "path": "/home/yanni/proj/dotfiles/personal-shit",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/yanni/proj/dotfiles/personal-shit",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "personal-shit": "personal-shit"
       }
     },
     "systems": {

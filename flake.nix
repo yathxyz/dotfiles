@@ -28,9 +28,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    personal-shit = {
+      url = "path:/home/yanni/proj/dotfiles/personal-shit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, personal-shit, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux";
@@ -81,6 +85,7 @@
 	  modules = [
 	    ./hosts/spacestation-libra
             agenix.nixosModules.default
+            personal-shit.nixosModules.personal-shit
 	  ];
 	};
       };
