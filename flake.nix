@@ -85,7 +85,12 @@
 	  modules = [
 	    ./hosts/spacestation-libra
             agenix.nixosModules.default
-            personal-shit.nixosModules.personal-shit
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
 	  ];
 	};
       };

@@ -4,33 +4,6 @@
   home.username = "yanni";
   home.homeDirectory = "/home/yanni";
 
-  home.packages = with pkgs; [
-    awscli2
-    brave
-    dconf
-    fd
-    gnupg
-    ispell
-    isync
-    languagetool
-    libnotify
-    mpv
-    nixfmt-classic
-    pinentry
-    pulseaudio
-    rclone
-    ripgrep
-    signal-desktop
-    sops
-    tmux
-    xclip
-    xorg.xset
-    yt-dlp
-    zotero
-  ];
-
-  services.dunst.enable = true;
-
   home.file = {
     ".gnupg/gpg.conf".text = ''
       use-agent
@@ -42,21 +15,6 @@
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
   };
 
-  home.sessionVariables = rec {
-    WORKDIR = "$HOME/work/";
-    ZOTERODIR = "$HOME/Zotero/";
-    STUFFDIR = "$HOME/stuff/";
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
-    EDITOR = "nvim";
-  };
-
-  programs.firefox.enable = true;
-
-  programs.emacs.enable = true;
-
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -64,16 +22,13 @@
     vimdiffAlias = true;
   };
 
-  programs.fzf.enable = true;
+  programs.zsh.oh-my-zsh.enable = true;
+  programs.zsh.oh-my-zsh.theme = "cloud";
 
-  programs.zsh = {
+  programs.fzf = {
     enable = true;
-    shellAliases = {
-      rr =
-        "curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | ${pkgs.bash}/bin/bash";
-    };
+    enableZshIntegration = true;
   };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

@@ -40,7 +40,10 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILHQ3V/Ikc3SPoP1ypRvGlcQoEbRlfqdIhHg+vMWFGRj"
     ];
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
   programs.nh = {
     enable = true;
