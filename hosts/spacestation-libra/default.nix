@@ -10,12 +10,6 @@
 
   age.identityPaths = ["/home/yanni/.ssh/id_ed25519"];
 
-  age.secrets.secret1 = { 
-    file = ../../secrets/secret1.age;
-    mode = "770";
-    owner = "yanni";
-    group = "users";
-  };
 
   networking.firewall = {
     enable = true;

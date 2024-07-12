@@ -11,5 +11,8 @@ let
 in
 {
   "secret1.age".publicKeys = users;
+  "ghtoken.age".publicKeys = users;
+  "awstoken.age".publicKeys = users;
+  "openaitoken.age".publicKeys = users;
+  "hfacetoken.age".publicKeys = users;
 }
-

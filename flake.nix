@@ -84,6 +84,7 @@
 	  system = "x86_64-linux";
 	  modules = [
 	    ./hosts/spacestation-libra
+            ./secrets
             agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
