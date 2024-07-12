@@ -43,7 +43,14 @@
     shell = pkgs.zsh;
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh.enable = true;
+    oh-my-zsh.theme = "cloud";
+    autosuggestions.enable = true;
+    zsh-autoenv.enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   programs.nh = {
     enable = true;

@@ -15,6 +15,11 @@
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -22,13 +27,6 @@
     vimdiffAlias = true;
   };
 
-  programs.zsh.oh-my-zsh.enable = true;
-  programs.zsh.oh-my-zsh.theme = "cloud";
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
