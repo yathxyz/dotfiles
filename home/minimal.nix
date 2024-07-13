@@ -5,14 +5,11 @@
   home.homeDirectory = "/home/yanni";
 
   home.file = {
+    ".gnupg/common.conf".text = "use-keyboxd";
     ".gnupg/gpg.conf".text = ''
       use-agent
       pinentry-mode loopback
     '';
-    ".config/i3/config".text = builtins.readFile ./config/i3/config;
-    #".Xresources".text = "Xcursor.theme: Bibata-Modern-Ice";
-    ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
-    ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
   };
 
   programs.fzf = {
@@ -33,3 +30,4 @@
   home.stateVersion =
     "23.05"; # Check home manager release notes before updating
 }
+
