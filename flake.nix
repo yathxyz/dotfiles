@@ -28,13 +28,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    personal-shit = {
-      url = "path:/home/yanni/proj/dotfiles/personal-shit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, personal-shit, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux";
