@@ -15,4 +15,5 @@ in
   "awstoken.age".publicKeys = users;
   "openaitoken.age".publicKeys = users;
   "hfacetoken.age".publicKeys = users;
+  "gcptoken.age".publicKeys = users;
 }

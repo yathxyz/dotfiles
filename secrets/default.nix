@@ -31,6 +31,12 @@
     owner = "yanni";
   };
 
+  age.secrets.gcptoken = {
+    file = ./gcptoken.age;
+    mode = "700";
+    owner = "yanni";
+  };
+
   # Here we deploy our secrets for our system using environment variables
   # Eventually I'll find something better for this
 
@@ -51,6 +57,9 @@
 
     #HUGGINGFACE
     HF_TOKEN_PATH = config.age.secrets.hftoken.path;
+
+    # GCP
+    GOOGLE_APPLICATION_CREDENTIALS = config.age.secrets.gcptoken.path;
   };
 }
 
