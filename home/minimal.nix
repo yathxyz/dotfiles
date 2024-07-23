@@ -17,6 +17,15 @@
     enableZshIntegration = true;
   };
 
+  home.packages = with pkgs; [
+    gcc
+    ripgrep
+    fd
+    fzf
+    make
+    unzip
+  ];
+
   programs.neovim = {
     enable = true;
     viAlias = true;

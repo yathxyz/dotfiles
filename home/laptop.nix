@@ -6,27 +6,20 @@
   home.homeDirectory = "/home/yanni";
 
   home.packages = with pkgs; [
-    awscli2
     dconf
-    fd
     emacs
+    fd
+    gcc
     gnupg
-    ispell
     isync
-    languagetool
-    libnotify
+    gnumake
     mpv
-    nixfmt-classic
-    pinentry
-    pulseaudio
-    rclone
     ripgrep
     signal-desktop
-    sops
     tmux
+    unzip
     xclip
     xorg.xset
-    yt-dlp
     zotero
   ];
 
