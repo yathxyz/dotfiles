@@ -33,7 +33,6 @@
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
     #".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
-    ".config/nvim/init.lua".text = builtins.readFile ./config/nvim/init.lua;
   };
 
   #  home.sessionVariables = rec {
