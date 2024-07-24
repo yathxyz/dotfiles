@@ -26,6 +26,10 @@
     unzip
   ];
 
+  programs.direnv.enable = true;
+  programs.direnv.enableZshIntegration = true;
+  programs.direnv.nix-direnv.enable = true;
+
   programs.neovim = {
     enable = true;
     viAlias = true;
