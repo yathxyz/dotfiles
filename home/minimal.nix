@@ -22,7 +22,7 @@
     ripgrep
     fd
     fzf
-    make
+    gnumake
     unzip
   ];
 
