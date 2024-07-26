@@ -103,6 +103,10 @@
             inherit defaultName;
           };
         };
+        nix-on-droid = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home/minimal.nix ];
+        };
       };
     };
 }
