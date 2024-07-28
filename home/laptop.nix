@@ -61,6 +61,12 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    theme = "Solarized Dark";
+  };
+
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;

@@ -101,7 +101,6 @@
     git
     gnupg-pkcs11-scd
     htop
-    kitty
     libtool
     neovim
     nh
