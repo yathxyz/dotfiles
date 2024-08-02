@@ -18,11 +18,12 @@
   };
 
   home.packages = with pkgs; [
-    gcc
-    ripgrep
+    cargo
     fd
     fzf
+    gcc
     gnumake
+    ripgrep
     unzip
   ];
 
