@@ -24,6 +24,7 @@
     gcc
     gnumake
     ripgrep
+    shell-gpt
     unzip
   ];
 
