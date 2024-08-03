@@ -102,9 +102,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.opengl = { enable = true; };
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -164,7 +162,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [ neovim emacs git ];
+  environment.systemPackages = with pkgs; [
+    emacs
+    fd
+    git
+    gnumake
+    neovim
+    ripgrep
+    unzip
+    xclip
+  ];
 
   environment.variables = {
     EDITOR = "nvim";
