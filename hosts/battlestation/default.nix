@@ -163,8 +163,10 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    cargo
     emacs
     fd
+    gcc
     git
     gnumake
     neovim
