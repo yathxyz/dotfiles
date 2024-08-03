@@ -104,8 +104,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Enable the GNOME Desktop Environment.
