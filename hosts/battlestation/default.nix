@@ -102,7 +102,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  hardware.opengl = { enable = true; };
+  hardware.graphics.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -152,7 +152,7 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
+  services.displayManager.enable = true;
   services.xserver.displayManager.autoLogin.user = "yanni";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
