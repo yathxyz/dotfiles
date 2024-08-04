@@ -79,11 +79,21 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh.enable = true;
+    oh-my-zsh.theme = "cloud";
+    autosuggestions.enable = true;
+    zsh-autoenv.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.yanni = {
     isNormalUser = true;
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
     ];
