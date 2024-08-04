@@ -89,6 +89,12 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/deck
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
           ];
         };
       };
