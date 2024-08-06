@@ -39,6 +39,14 @@
     xkbVariant = "";
   };
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
