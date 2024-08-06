@@ -61,6 +61,7 @@
           modules = [
             ./modules/common.nix
             ./hosts/thinkpad
+            ./modules/fonts.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -91,6 +92,7 @@
           modules = [
             ./hosts/deck
             ./modules/common.nix
+            ./modules/fonts.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
