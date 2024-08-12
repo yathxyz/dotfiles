@@ -23,6 +23,7 @@
     fzf
     gcc
     gnumake
+    python3
     ripgrep
     shell-gpt
     unzip
