@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Would like to use it but I can't build things from source just yet
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -30,14 +35,15 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
     let
       defaultName = "yanni";
-      system = "x86_64-linux";
+      system = "x86_64-linux"; # We are making a very bad assumption here
       pkgs = nixpkgs.legacyPackages.${system};
       overlays = import ./overlays.nix;
     in {
       overlays.steamOverlay = overlays.steamOverlay;
+
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -115,5 +121,14 @@
           };
         };
       };
+
+      # Very hacky and absolutely disgusting but I need this for the time being
+      # Otherwise I can't risk being stuck in a situation where I can't rekey
+      # my secrets properly.
+      # That *probably* means that I can only set up secrets when using x86_64-linux.
+      # Great!
+      devShells.${system}.secrets = let
+        pkgs = import nixpkgs { system = "x86_64-linux"; overlays = [ inputs.agenix-rekey.overlays.default ]; };
+    in pkgs.mkShell { packages = [ pkgs.agenix-rekey ];}; 
     };
 }
