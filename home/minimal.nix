@@ -22,6 +22,7 @@
     fd
     fzf
     gcc
+    gh
     gnumake
     python3
     ripgrep
