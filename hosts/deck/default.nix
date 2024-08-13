@@ -85,8 +85,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      firefox
       emacs
+      firefox
+      signal-desktop
+      zotero
     ];
   };
 
