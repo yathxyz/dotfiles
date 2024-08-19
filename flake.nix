@@ -68,6 +68,8 @@
             ./modules/common.nix
             ./hosts/thinkpad
             ./modules/fonts.nix
+            ./secrets
+            agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
