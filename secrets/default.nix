@@ -37,6 +37,12 @@
     owner = "yanni";
   };
 
+  age.secrets.cloudflaretoken = {
+    file = ./cloudflaretoken.age;
+    mode = "400";
+    owner = "yanni";
+  };
+
   # Here we deploy our secrets for our system using environment variables
   # Eventually I'll find something better for this
 
@@ -60,6 +66,9 @@
 
     # GCP
     GOOGLE_APPLICATION_CREDENTIALS = config.age.secrets.gcptoken.path;
+
+    #CLOUDFLARE
+    CLOUDFLARE_API_TOKEN = "$(cat ${config.age.secrets.cloudflaretoken.path})";
   };
 }
 

@@ -16,4 +16,5 @@ in
   "openaitoken.age".publicKeys = users;
   "hfacetoken.age".publicKeys = users;
   "gcptoken.age".publicKeys = users;
+  "cloudflaretoken.age".publicKeys = users;
 }
