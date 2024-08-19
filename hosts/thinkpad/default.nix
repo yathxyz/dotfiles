@@ -13,6 +13,8 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
+  age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
+
   boot = { kernelPackages = pkgs.linuxPackages_latest; };
 
   # TODO Setup keyfile
