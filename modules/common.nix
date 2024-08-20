@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -6,7 +6,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Set up complementary lisp machine
-  nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+  # nixpkgs.overlays = [ emacs-overlay.overlay ];
 
 #  services.emacs = {
 #    enable = true;

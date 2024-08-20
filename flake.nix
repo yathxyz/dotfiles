@@ -43,6 +43,7 @@
       overlays = import ./overlays.nix;
     in {
       overlays.steamOverlay = overlays.steamOverlay;
+      overlays.emacs = emacs-overlay.overlays.default;
 
       nixosConfigurations = {
         battlestation = nixpkgs.lib.nixosSystem {
@@ -108,8 +109,10 @@
 
         deck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
           modules = [
+            ({
+              nixpkgs.overlays = [ overlays.emacs ];
+            })
             ./hosts/deck
             ./modules/common.nix
             ./modules/fonts.nix

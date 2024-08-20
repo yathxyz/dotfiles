@@ -2,12 +2,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [ ./vpsadminos.nix ];
 
-  services.syncthing = {
-    user = "yanni";
-    enable = true;
-    configDir = "/home/yanni/.config/syncthing";
-  };
-
   age.identityPaths = ["/home/yanni/.ssh/id_ed25519"];
 
 
