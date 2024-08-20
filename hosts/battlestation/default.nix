@@ -145,6 +145,7 @@
   users.users.yanni = {
     isNormalUser = true;
     description = "Ioannis Eleftheriou";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox

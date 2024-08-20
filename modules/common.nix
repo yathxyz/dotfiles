@@ -41,4 +41,24 @@
     LC_TIME = "en_IE.UTF-8";
   };
 
+  # Favourite shell
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh.enable = true;
+    oh-my-zsh.theme = "cloud";
+    autosuggestions.enable = true;
+    zsh-autoenv.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  # Nix helper
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+  };
+
+
 }

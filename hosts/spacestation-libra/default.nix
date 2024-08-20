@@ -38,23 +38,6 @@
     shell = pkgs.zsh;
   };
 
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh.enable = true;
-    oh-my-zsh.theme = "cloud";
-    autosuggestions.enable = true;
-    zsh-autoenv.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep-since 4d --keep 3";
-    };
-  };
-
   security.acme = {
     acceptTerms = true;
     defaults.email = "me@yath.xyz";

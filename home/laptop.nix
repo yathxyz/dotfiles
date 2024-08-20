@@ -53,14 +53,6 @@
   home.stateVersion =
     "23.05"; # Check home manager release notes before updating
 
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
-  };
-
   programs.kitty = {
     enable = true;
     theme = "Solarized Dark";

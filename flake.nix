@@ -49,9 +49,16 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [ 
+            ./modules/common.nix
             ./hosts/battlestation 
             ./secrets
             agenix.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
           ];
         };
 
@@ -86,6 +93,7 @@
         spacestation-libra = nixpkgs.lib.nixosSystem {
 	  system = "x86_64-linux";
 	  modules = [
+            ./modules/common.nix
 	    ./hosts/spacestation-libra
             ./secrets
             agenix.nixosModules.default
