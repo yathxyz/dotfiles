@@ -40,9 +40,8 @@
       defaultName = "yanni";
       system = "x86_64-linux"; # We are making a very bad assumption here
       pkgs = nixpkgs.legacyPackages.${system};
-      overlays = import ./overlays.nix;
     in {
-      overlays.steamOverlay = overlays.steamOverlay;
+      overlays.steamOverlay = import ./overlays/steam.nix;
       overlays.emacs = emacs-overlay.overlays.default;
 
       nixosConfigurations = {
@@ -111,7 +110,7 @@
           system = "x86_64-linux";
           modules = [
             ({
-              nixpkgs.overlays = [ overlays.emacs ];
+              nixpkgs.overlays = [ self.overlays.emacs ];
             })
             ./hosts/deck
             ./modules/common.nix
