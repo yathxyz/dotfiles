@@ -31,6 +31,8 @@
     })
   ];
 
+
+  age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
   # Bootloader.
   boot.loader.grub = {
     enable = true;
