@@ -1,17 +1,39 @@
-{ config, pkgs, ... }: {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+{ config, pkgs, ... }:
+{
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   imports = [ ./vpsadminos.nix ];
 
-  age.identityPaths = ["/home/yanni/.ssh/id_ed25519"];
-
+  age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 80 443 ];
+    allowedTCPPorts = [
+      22
+      80
+      443
+    ];
   };
-  environment.systemPackages = with pkgs; [ neovim git curl wget gnupg emacs comic-mono gcc ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    curl
+    wget
+    gnupg
+    emacs
+    comic-mono
+    gcc
+    podman-tui
+    dive
+    podman-compose
+  ];
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   networking.hostName = "spacestation-libra";
   services.openssh.enable = true;
@@ -47,7 +69,7 @@
       enableACME = true;
       locations."/test" = {
         proxyPass = "http://127.0.0.1:8081/";
-	proxyWebsockets = true;
+        proxyWebsockets = true;
       };
       locations."/tty" = {
         proxyPass = "http://127.0.0.1:8080/";
@@ -59,9 +81,9 @@
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection "upgrade";
         '';
-       };
       };
     };
+  };
 
   services.ttyd = {
     writeable = true;
