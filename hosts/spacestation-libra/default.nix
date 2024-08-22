@@ -11,11 +11,11 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      22
       80
       443
     ];
   };
+
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -36,9 +36,14 @@
   };
 
   networking.hostName = "spacestation-libra";
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "no";
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    ports = [ 443 ]; # It's called we do a little trolling
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
 
   users.users.yanni = {
     isNormalUser = true;
