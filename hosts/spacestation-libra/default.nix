@@ -59,48 +59,6 @@
     shell = pkgs.zsh;
   };
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "me@yath.xyz";
-  };
-
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    # other Nginx options
-    virtualHosts."spacestation-libra.yath.xyz" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/test" = {
-        proxyPass = "http://127.0.0.1:8081/";
-        proxyWebsockets = true;
-      };
-      locations."/tty" = {
-        proxyPass = "http://127.0.0.1:8080/";
-        extraConfig = ''
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $remote_addr;
-          proxy_set_header Host $host;
-          proxy_http_version 1.1;
-          proxy_set_header Upgrade $http_upgrade;
-          proxy_set_header Connection "upgrade";
-        '';
-      };
-    };
-  };
-
-  services.ttyd = {
-    writeable = true;
-    enable = true;
-    entrypoint = [ "${pkgs.tmux}/bin/tmux" ];
-    user = "yanni";
-    username = "yathxyz";
-    port = 8080;
-    passwordFile = config.age.secrets.secret1.path;
-    maxClients = 1;
-  };
-
   environment.sessionVariables = {
     WORKDIR = "$HOME/work/";
     EDITOR = "nvim";
