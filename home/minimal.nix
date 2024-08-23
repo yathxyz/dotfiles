@@ -15,18 +15,27 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    tmux.enableShellIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    clock24 = true;
+    sensibleOnTop = true;
+    tmuxp.enable = true;
   };
 
   home.packages = with pkgs; [
     cargo
     fd
-    fzf
     gcc
     gh
     gnumake
     python3
     ripgrep
     shell-gpt
+    tmux
     unzip
   ];
 
