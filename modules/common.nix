@@ -5,6 +5,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.nix-ld.enable = true;
+
   # Set up complementary lisp machine
   # nixpkgs.overlays = [ emacs-overlay.overlay ];
 
