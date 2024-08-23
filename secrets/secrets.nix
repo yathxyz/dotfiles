@@ -18,5 +18,6 @@ in
   "hfacetoken.age".publicKeys = users;
   "gcptoken.age".publicKeys = users;
   "cloudflaretoken.age".publicKeys = users;
+  "anthropictoken.age".publicKeys = users;
 }
 
