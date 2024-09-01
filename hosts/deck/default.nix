@@ -90,6 +90,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    wl-clipboard
     neovim
     git
     wget
