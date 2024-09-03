@@ -1,0 +1,13 @@
+.org-id-locations
+eln-cache/
+elpa/
+org-roam.db
+transient/
+bookmarks
+org-persist/
+auto-save-list/
+projects
+quelpa/
+url/
+server/
+custom.el
