@@ -44,6 +44,10 @@
   ## Run unpatched dynamic libraries on NixOS
   programs.nix-ld.enable = true;
 
+  fonts.packages = [
+    pkgs.comic-mono
+  ];
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   #  home-manager = {
