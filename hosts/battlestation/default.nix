@@ -41,6 +41,9 @@
     useOSProber = true;
   };
 
+  ## Run unpatched dynamic libraries on NixOS
+  programs.nix-ld.enable = true;
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   #  home-manager = {
