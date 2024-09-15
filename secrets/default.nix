@@ -49,6 +49,12 @@
     owner = "yanni";
   };
 
+  age.secrets.openrouter = {
+    file = ./openrouter.age;
+    mode = "400";
+    owner = "yanni";
+  };
+
   # Here we deploy our secrets for our system using environment variables
   # Eventually I'll find something better for this
 
@@ -78,6 +84,9 @@
 
     #ANTHROPIC
     ANTHROPIC_API_KEY = "$(cat ${config.age.secrets.anthropictoken.path})";
+
+    #OPENROUTER
+    OPENROUTER_API_KEY = "$(cat ${config.age.secrets.openrouter.path})";
   };
 }
 

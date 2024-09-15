@@ -19,5 +19,6 @@ in
   "gcptoken.age".publicKeys = users;
   "cloudflaretoken.age".publicKeys = users;
   "anthropictoken.age".publicKeys = users;
+  "openrouter.age".publicKeys = users;
 }
 
