@@ -1,19 +1,12 @@
-{ config, pkgs, ... }:
-{
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+{ config, pkgs, ... }: {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [ ./vpsadminos.nix ];
 
   age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [
-      80
-      443
-    ];
+    allowedTCPPorts = [ 80 443 ];
   };
 
   environment.systemPackages = with pkgs; [

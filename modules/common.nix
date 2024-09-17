@@ -10,13 +10,13 @@
   # Set up complementary lisp machine
   # nixpkgs.overlays = [ emacs-overlay.overlay ];
 
-#  services.emacs = {
-#    enable = true;
-#    package = pkgs.emacsWithPackagesFromUsePackage {
-#      package = pkgs.emacs;
-#      config = ../home/config/emacs/init.el;
-#    };
-#  };
+  #  services.emacs = {
+  #    enable = true;
+  #    package = pkgs.emacsWithPackagesFromUsePackage {
+  #      package = pkgs.emacs;
+  #      config = ../home/config/emacs/init.el;
+  #    };
+  #  };
 
   # TODO please make this actually reproducible
   services.syncthing = {
@@ -61,6 +61,5 @@
       extraArgs = "--keep-since 4d --keep 3";
     };
   };
-
 
 }

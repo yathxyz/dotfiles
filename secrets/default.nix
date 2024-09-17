@@ -1,7 +1,7 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
-  age.secrets.secret1 = { 
+  age.secrets.secret1 = {
     file = ./secret1.age;
     mode = "700";
     owner = "yanni";

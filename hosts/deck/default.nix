@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
@@ -67,12 +66,7 @@
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      emacs
-      firefox
-      signal-desktop
-      zotero
-    ];
+    packages = with pkgs; [ emacs firefox signal-desktop zotero ];
   };
 
   # Enable automatic login for the user.
@@ -97,7 +91,6 @@
     unzip
     cargo
   ];
-
 
   environment.sessionVariables = {
     WORKDIR = "$HOME/work/";

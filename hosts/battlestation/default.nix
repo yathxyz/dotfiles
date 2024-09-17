@@ -31,7 +31,6 @@
     })
   ];
 
-
   age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
   # Bootloader.
   boot.loader.grub = {
@@ -44,9 +43,7 @@
   ## Run unpatched dynamic libraries on NixOS
   programs.nix-ld.enable = true;
 
-  fonts.packages = [
-    pkgs.comic-mono
-  ];
+  fonts.packages = [ pkgs.comic-mono ];
 
   boot.loader.efi.canTouchEfiVariables = true;
 

@@ -82,9 +82,7 @@
     theme = "Solarized Dark";
   };
 
-  programs.alacritty = {
-    enable = true;
-  };
+  programs.alacritty = { enable = true; };
 
   programs.fzf = {
     enable = true;

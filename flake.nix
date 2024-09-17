@@ -48,9 +48,9 @@
         battlestation = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ 
+          modules = [
             ./modules/common.nix
-            ./hosts/battlestation 
+            ./hosts/battlestation
             ./secrets
             agenix.nixosModules.default
             home-manager.nixosModules.home-manager
@@ -91,10 +91,10 @@
         };
 
         spacestation-libra = nixpkgs.lib.nixosSystem {
-	  system = "x86_64-linux";
-	  modules = [
+          system = "x86_64-linux";
+          modules = [
             ./modules/common.nix
-	    ./hosts/spacestation-libra
+            ./hosts/spacestation-libra
             ./secrets
             agenix.nixosModules.default
             home-manager.nixosModules.home-manager
@@ -103,15 +103,13 @@
               home-manager.useUserPackages = true;
               home-manager.users.yanni = import ./home/minimal.nix;
             }
-	  ];
-	};
+          ];
+        };
 
         deck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({
-              nixpkgs.overlays = [ self.overlays.emacs ];
-            })
+            ({ nixpkgs.overlays = [ self.overlays.emacs ]; })
             ./hosts/deck
             ./modules/common.nix
             ./modules/fonts.nix
@@ -144,7 +142,10 @@
       # That *probably* means that I can only set up secrets when using x86_64-linux.
       # Great!
       devShells.${system}.secrets = let
-        pkgs = import nixpkgs { system = "x86_64-linux"; overlays = [ inputs.agenix-rekey.overlays.default ]; };
-    in pkgs.mkShell { packages = [ pkgs.agenix-rekey ];}; 
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [ inputs.agenix-rekey.overlays.default ];
+        };
+      in pkgs.mkShell { packages = [ pkgs.agenix-rekey ]; };
     };
 }
