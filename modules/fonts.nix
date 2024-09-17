@@ -6,5 +6,6 @@
     noto-fonts-cjk
     noto-fonts-emoji
     comic-mono
+    terminus-nerdfont
   ];
 }
