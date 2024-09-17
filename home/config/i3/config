@@ -20,7 +20,7 @@ floating_modifier $mod
 
 tiling_drag modifier titlebar
 
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec --no-startup-id dmenu_run

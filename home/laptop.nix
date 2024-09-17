@@ -33,6 +33,7 @@
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
     #".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
+    ".config/alacritty/alacritty.toml" = builtins.readFile ./config;
   };
 
   #  home.sessionVariables = rec {
@@ -58,6 +59,9 @@
     theme = "Solarized Dark";
   };
 
+  programs.alacritty = {
+    enable = true;
+  };
 
   programs.fzf = {
     enable = true;
