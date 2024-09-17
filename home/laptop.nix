@@ -33,7 +33,30 @@
     ".ideavimrc".text = builtins.readFile ./config/rider/ideavimrc;
     ".config/i3status/config".text = builtins.readFile ./config/i3status/config;
     #".config/emacs/init.el".text = builtins.readFile ./config/emacs/init.el;
-    ".config/alacritty/alacritty.toml" = builtins.readFile ./config;
+    ".config/alacritty/alacritty.toml".text = ''
+
+      [colors.primary]
+      background = "#000000"
+
+      [font]
+      size = 12.0
+
+      [font.bold]
+      family = "Terminess Nerd Font Mono"
+      style = "Bold"
+
+      [font.bold_italic]
+      family = "Terminess Nerd Font Mono"
+      style = "Bold Italic"
+
+      [font.italic]
+      family = "Terminess Nerd Font Mono"
+      style = "Italic"
+
+      [font.normal]
+      family = "Terminess Nerd Font Mono"
+      style = "Regular"
+    '';
   };
 
   #  home.sessionVariables = rec {
