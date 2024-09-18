@@ -11,6 +11,11 @@
     useOSProber = true;
   };
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
@@ -97,6 +102,7 @@
     brightnessctl
     coreutils-full
     curl
+    distrobox
     feh
     git
     gnupg-pkcs11-scd
