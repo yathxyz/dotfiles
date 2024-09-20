@@ -14,7 +14,7 @@
 
     # NB this is all actually evaluated by `agenix rekey` and makes changes to the repo
     storageMode = "local";
-    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+    localStorageDir = "${inputs.self}/secrets/rekeyed";
   };
 
   ## Secrets declarations
