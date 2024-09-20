@@ -1,29 +1,13 @@
 { inputs, pkgs, lib, config, ... }:
 
-let
-    ed25519Matches =  lib.filter (x: x.type == "ed25519") config.services.openssh.hostKeys;
-    firstMatch = if lib.length ed25519Matches > 0 then lib.elemAt ed25519Matches 0 else null;
-    firstMatchPathString = (builtins.toString firstMatch.path) + ".pub";
-    in
 {
-  ## default.nix for the secrets module. Add to modules list
-  # of the host attribute of nixosConfigurations
-
-  ## Part of agenix-rekey extension for agenix
-  # This is so that secrets.nix is not needed to be manually set up for rekeying
-  # Unfortunately this makes my configuration compatible with flakes only
   age.rekey = {
-    # Make sure to set up age.rekey.hostPubkey! on your host's configuration.nix!
 
     masterIdentities = [ "${inputs.self}/secrets/yubikey-843-personal.pub" ];
 
-    # NB this is all actually evaluated by `agenix rekey` and makes changes to the repo
     storageMode = "local";
     localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
   };
-
-  age.rekey.hostPubkey = firstMatchPathString;
-  ## Secrets declarations
 
   age.secrets.ghtoken = {
     rekeyFile = ./ghtoken.age;
