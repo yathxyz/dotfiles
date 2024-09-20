@@ -11,7 +11,7 @@
     useOSProber = true;
   };
 
-  age.rekey.hostpubKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuFsupm/NByu90P+nUwFKA38N7zlgn9AJFr593WSra root@thinkpad";
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuFsupm/NByu90P+nUwFKA38N7zlgn9AJFr593WSra root@thinkpad";
 
   virtualisation.podman = {
     enable = true;
