@@ -9,6 +9,8 @@
     ./hardware-configuration.nix
   ];
 
+  age.rekey.hostpubKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXCLdtbZZhyMuWH5zqPqF1ej1KqQgCdPYZycGzVo0OZ";
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
