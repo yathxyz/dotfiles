@@ -2,7 +2,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [ ./vpsadminos.nix ];
 
-  age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
+  age.rekey.hostpubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA/LLjyMkRjvd4Nh56MJZ8fdqqpVVmivsOnll062rwbP"
 
   networking.firewall = {
     enable = true;
