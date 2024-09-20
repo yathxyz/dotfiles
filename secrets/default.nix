@@ -1,56 +1,74 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
+  ## default.nix for the secrets module. Add to modules list
+  # of the host attribute of nixosConfigurations
+
+  ## Part of agenix-rekey extension for agenix
+  # This is so that secrets.nix is not needed to be manually set up for rekeying
+  # Unfortunately this makes my configuration compatible with flakes only
+  age.rekey = {
+    # Make sure to set up age.rekey.hostPubkey! on your host's configuration.nix!
+
+    masterIdentities = [ "${inputs.self}/secrets/yubikey-843-personal.pub" ];
+
+    # NB this is all actually evaluated by `agenix rekey` and makes changes to the repo
+    storageMode = "local";
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  };
+
+  ## Secrets declarations
+
   age.secrets.secret1 = {
-    file = ./secret1.age;
+    rekeyFile = ./secret1.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.ghtoken = {
-    file = ./ghtoken.age;
+    rekeyFile = ./ghtoken.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.awstoken = {
-    file = ./awstoken.age;
+    rekeyFile = ./awstoken.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.openaitoken = {
-    file = ./openaitoken.age;
+    rekeyFile = ./openaitoken.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.hftoken = {
-    file = ./hfacetoken.age;
+    rekeyFile = ./hfacetoken.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.gcptoken = {
-    file = ./gcptoken.age;
+    rekeyFile = ./gcptoken.age;
     mode = "700";
     owner = "yanni";
   };
 
   age.secrets.cloudflaretoken = {
-    file = ./cloudflaretoken.age;
+    rekeyFile = ./cloudflaretoken.age;
     mode = "400";
     owner = "yanni";
   };
 
   age.secrets.anthropictoken = {
-    file = ./anthropictoken.age;
+    rekeyFile = ./anthropictoken.age;
     mode = "400";
     owner = "yanni";
   };
 
   age.secrets.openrouter = {
-    file = ./openrouter.age;
+    rekeyFile = ./openrouter.age;
     mode = "400";
     owner = "yanni";
   };

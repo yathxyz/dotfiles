@@ -19,6 +19,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK57s5sR1Kfqr6K6dCMJRo2NU0F9OeLrF//sOrlDSd2R";
+  };
 
   boot = { kernelPackages = pkgs.linuxPackages_latest; };
 

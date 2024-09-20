@@ -35,7 +35,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, emacs-overlay, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, agenix, agenix-rekey, ... }@inputs:
     let
       defaultName = "yanni";
       system = "x86_64-linux"; # We are making a very bad assumption here
@@ -43,35 +43,13 @@
     in {
       overlays.steamOverlay = import ./overlays/steam.nix;
       overlays.emacs = emacs-overlay.overlays.default;
-
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nodes = self.nixosConfigurations;
+        # Example for colmena:
+        # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
+      };
       nixosConfigurations = {
-        battlestation = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./modules/common.nix
-            ./hosts/battlestation
-            ./secrets
-            agenix.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.yanni = import ./home/minimal.nix;
-            }
-          ];
-        };
-
-        surface = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./hosts/surface ];
-        };
-
-        grapes = nixpkgs.lib.nixosSystem { # Raspberry pi
-          system = "aarch64-linux";
-          modules = [ ./hosts/grapes ];
-        };
-
         thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -81,6 +59,7 @@
             ./modules/fonts.nix
             ./secrets
             agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -89,40 +68,6 @@
             }
           ];
         };
-
-        spacestation-libra = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./modules/common.nix
-            ./hosts/spacestation-libra
-            ./secrets
-            agenix.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.yanni = import ./home/minimal.nix;
-            }
-          ];
-        };
-
-        deck = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ({ nixpkgs.overlays = [ self.overlays.emacs ]; })
-            ./hosts/deck
-            ./modules/common.nix
-            ./modules/fonts.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.yanni = import ./home/minimal.nix;
-            }
-          ];
-        };
-      };
-
       homeConfigurations = {
         ${defaultName} = home-manager.lib.homeManagerConfiguration {
 
