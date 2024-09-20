@@ -1,5 +1,10 @@
 { inputs, pkgs, lib, config, ... }:
 
+let
+    ed25519Matches =  lib.filter (x: x.type == "ed25519") config.services.openssh.hostKeys;
+    firstMatch = if lib.length ed25519Matches > 0 then lib.elemAt ed25519Matches 0 else null;
+    firstMatchPathString = (builtins.toString firstMatch.path) + ".pub";
+    in
 {
   ## default.nix for the secrets module. Add to modules list
   # of the host attribute of nixosConfigurations
@@ -17,6 +22,7 @@
     localStorageDir = "${inputs.self}/secrets/rekeyed";
   };
 
+  age.rekey.hostPubkey = firstMatchPathString;
   ## Secrets declarations
 
   age.secrets.ghtoken = {
