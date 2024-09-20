@@ -19,12 +19,6 @@
 
   ## Secrets declarations
 
-  age.secrets.secret1 = {
-    rekeyFile = ./secret1.age;
-    mode = "700";
-    owner = "yanni";
-  };
-
   age.secrets.ghtoken = {
     rekeyFile = ./ghtoken.age;
     mode = "700";
@@ -39,18 +33,6 @@
 
   age.secrets.openaitoken = {
     rekeyFile = ./openaitoken.age;
-    mode = "700";
-    owner = "yanni";
-  };
-
-  age.secrets.hftoken = {
-    rekeyFile = ./hfacetoken.age;
-    mode = "700";
-    owner = "yanni";
-  };
-
-  age.secrets.gcptoken = {
-    rekeyFile = ./gcptoken.age;
     mode = "700";
     owner = "yanni";
   };
@@ -90,12 +72,6 @@
 
     #OPENAI
     OPENAI_API_KEY = "$(cat ${config.age.secrets.openaitoken.path})";
-
-    #HUGGINGFACE
-    HF_TOKEN_PATH = config.age.secrets.hftoken.path;
-
-    # GCP
-    GOOGLE_APPLICATION_CREDENTIALS = config.age.secrets.gcptoken.path;
 
     #CLOUDFLARE
     CLOUDFLARE_API_TOKEN = "$(cat ${config.age.secrets.cloudflaretoken.path})";
