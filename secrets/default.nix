@@ -1,28 +1,20 @@
 { inputs, pkgs, lib, config, ... }:
 
 {
-  ## default.nix for the secrets module. Add to modules list
-  # of the host attribute of nixosConfigurations
-
-  ## Part of agenix-rekey extension for agenix
-  # This is so that secrets.nix is not needed to be manually set up for rekeying
-  # Unfortunately this makes my configuration compatible with flakes only
   age.rekey = {
-    # Make sure to set up age.rekey.hostPubkey! on your host's configuration.nix!
 
     masterIdentities = [ "${inputs.self}/secrets/yubikey-843-personal.pub" ];
 
-    # NB this is all actually evaluated by `agenix rekey` and makes changes to the repo
     storageMode = "local";
     localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
-  };
 
-  ## Secrets declarations
+    # NB public keys that are part of the rekeying process are actually stored in the configuration.nix
+    # like so: `age.rekey.pubHostkey = "ssh-ed25519 ...";`
+    # for each host. agenix rekey looks for this value on every host.
 
-  age.secrets.secret1 = {
-    rekeyFile = ./secret1.age;
-    mode = "700";
-    owner = "yanni";
+    # It doesn't exactly remove the labour associated with secrets.nix.
+    # You are required to be explicit about the ssh public key for every host.
+    # Regardless, the added benefit of using a hardware token to rekey cannot be stressed enough.
   };
 
   age.secrets.ghtoken = {
@@ -39,18 +31,6 @@
 
   age.secrets.openaitoken = {
     rekeyFile = ./openaitoken.age;
-    mode = "700";
-    owner = "yanni";
-  };
-
-  age.secrets.hftoken = {
-    rekeyFile = ./hfacetoken.age;
-    mode = "700";
-    owner = "yanni";
-  };
-
-  age.secrets.gcptoken = {
-    rekeyFile = ./gcptoken.age;
     mode = "700";
     owner = "yanni";
   };
@@ -90,12 +70,6 @@
 
     #OPENAI
     OPENAI_API_KEY = "$(cat ${config.age.secrets.openaitoken.path})";
-
-    #HUGGINGFACE
-    HF_TOKEN_PATH = config.age.secrets.hftoken.path;
-
-    # GCP
-    GOOGLE_APPLICATION_CREDENTIALS = config.age.secrets.gcptoken.path;
 
     #CLOUDFLARE
     CLOUDFLARE_API_TOKEN = "$(cat ${config.age.secrets.cloudflaretoken.path})";

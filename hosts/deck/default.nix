@@ -2,12 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXCLdtbZZhyMuWH5zqPqF1ej1KqQgCdPYZycGzVo0OZ";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
@@ -18,6 +20,7 @@
   networking.hostName = "deck"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  services.pcscd.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -108,7 +111,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
