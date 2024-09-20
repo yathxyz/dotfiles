@@ -68,6 +68,44 @@
             }
           ];
         };
+
+        spacestation-libra = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/common.nix
+            ./hosts/spacestation-libra
+            ./secrets
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
+          ];
+        };
+
+        deck = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ nixpkgs.overlays = [ self.overlays.emacs ]; })
+            ./hosts/deck
+            ./modules/common.nix
+            ./modules/fonts.nix
+            ./secrets
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
+          ];
+        };
+      };
+
       homeConfigurations = {
         ${defaultName} = home-manager.lib.homeManagerConfiguration {
 
