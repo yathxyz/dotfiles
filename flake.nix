@@ -40,26 +40,30 @@
       defaultName = "yanni";
       system = "x86_64-linux"; # We are making a very bad assumption here
       pkgs = nixpkgs.legacyPackages.${system};
+
+      commonModules = [
+        ./modules/common.nix
+        ./modules/fonts.nix
+        ./secrets
+        agenix.nixosModules.default
+        agenix-rekey.nixosModules.default
+      ];
+
     in {
       overlays.steamOverlay = import ./overlays/steam.nix;
       overlays.emacs = emacs-overlay.overlays.default;
+
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nodes = self.nixosConfigurations;
-        # Example for colmena:
-        # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
       };
+
       nixosConfigurations = {
-        thinkpad = nixpkgs.lib.nixosSystem {
+        thinkpad = builtins.trace "THINKPAD OH I'M THINKING" nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [
-            ./modules/common.nix
+          modules = commonModules ++ [
             ./hosts/thinkpad
-            ./modules/fonts.nix
-            ./secrets
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -69,14 +73,11 @@
           ];
         };
 
-        spacestation-libra = nixpkgs.lib.nixosSystem {
+        spacestation-libra = builtins.trace "HESOYAM" nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
-            ./modules/common.nix
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ [
             ./hosts/spacestation-libra
-            ./secrets
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -86,16 +87,12 @@
           ];
         };
 
-        deck = nixpkgs.lib.nixosSystem {
+        deck = builtins.trace "STEAM DECK GO" nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ [
             ({ nixpkgs.overlays = [ self.overlays.emacs ]; })
             ./hosts/deck
-            ./modules/common.nix
-            ./modules/fonts.nix
-            ./secrets
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -118,17 +115,5 @@
           };
         };
       };
-
-      # Very hacky and absolutely disgusting but I need this for the time being
-      # Otherwise I can't risk being stuck in a situation where I can't rekey
-      # my secrets properly.
-      # That *probably* means that I can only set up secrets when using x86_64-linux.
-      # Great!
-      devShells.${system}.secrets = let
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          overlays = [ inputs.agenix-rekey.overlays.default ];
-        };
-      in pkgs.mkShell { packages = [ pkgs.agenix-rekey ]; };
     };
 }
