@@ -19,7 +19,7 @@ let
 
     # NB this is all actually evaluated by `agenix rekey` and makes changes to the repo
     storageMode = "local";
-    localStorageDir = "${inputs.self}/secrets/rekeyed${config.services.networking.hostName}";
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
   };
 
   age.rekey.hostPubkey = firstMatchPathString;
