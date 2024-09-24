@@ -9,6 +9,8 @@
 
   programs.nix-ld.enable = true;
 
+  programs.direnv.enable = true;
+
   # Set up complementary lisp machine
   # nixpkgs.overlays = [ emacs-overlay.overlay ];
 
