@@ -59,7 +59,22 @@
       };
 
       nixosConfigurations = {
-        thinkpad = builtins.trace "THINKPAD OH I'M THINKING" nixpkgs.lib.nixosSystem {
+
+        battlestation = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = commonModules ++ [
+            ./hosts/battlestation
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yanni = import ./home/minimal.nix;
+            }
+          ];
+        };
+
+        thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = commonModules ++ [
@@ -73,7 +88,7 @@
           ];
         };
 
-        spacestation-libra = builtins.trace "HESOYAM" nixpkgs.lib.nixosSystem {
+        spacestation-libra = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = commonModules ++ [
@@ -87,7 +102,7 @@
           ];
         };
 
-        deck = builtins.trace "STEAM DECK GO" nixpkgs.lib.nixosSystem {
+        deck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = commonModules ++ [

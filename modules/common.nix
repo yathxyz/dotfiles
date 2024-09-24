@@ -5,6 +5,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.pcscd.enable = true; # Required for yubikey setup
+
   programs.nix-ld.enable = true;
 
   # Set up complementary lisp machine

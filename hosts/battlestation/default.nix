@@ -8,6 +8,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPUQbWCK/OS96YElGmbwJ9sUZ1ByaxVtJKpVMkGABwPD";
+
   nixpkgs.overlays = [
     (final: prev: {
       steam = prev.steam.override {
@@ -31,7 +33,6 @@
     })
   ];
 
-  age.identityPaths = [ "/home/yanni/.ssh/id_ed25519" ];
   # Bootloader.
   boot.loader.grub = {
     enable = true;
@@ -49,7 +50,7 @@
 
   #  home-manager = {
   #    extraSpecialArgs = { inherit inputs; };
-  #    users = { 
+  #    users = {
   #      "yanni" = {
   #        home.sessionVariables = {
   #	  WORKDIR = "$HOME/work/";
