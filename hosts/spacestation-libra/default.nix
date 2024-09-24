@@ -6,7 +6,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 80 443 22000 ];
+    allowedUDPPorts = [ 22000 21027 ];
   };
 
   environment.systemPackages = with pkgs; [
