@@ -5,6 +5,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  documentation.dev.enable = true;
+
   services.pcscd.enable = true; # Required for yubikey setup
 
   programs.nix-ld.enable = true;
