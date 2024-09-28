@@ -19,15 +19,7 @@
     emacs
     comic-mono
     gcc
-    podman-tui
-    dive
-    podman-compose
   ];
-
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
 
   networking.hostName = "spacestation-libra";
   services.openssh = {

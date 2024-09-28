@@ -13,6 +13,11 @@
 
   programs.direnv.enable = true;
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   # Set up complementary lisp machine
   # nixpkgs.overlays = [ emacs-overlay.overlay ];
 

@@ -13,11 +13,6 @@
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuFsupm/NByu90P+nUwFKA38N7zlgn9AJFr593WSra root@thinkpad";
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
-
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot = { kernelPackages = pkgs.linuxPackages_latest; };

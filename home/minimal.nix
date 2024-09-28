@@ -28,10 +28,14 @@
 
   home.packages = with pkgs; [
     cargo
+    distrobox
+    dive
     fd
     gcc
     gh
     gnumake
+    podman-compose
+    podman-tui
     python3
     ripgrep
     shell-gpt
