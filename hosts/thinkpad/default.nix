@@ -30,33 +30,25 @@
   networking.networkmanager.enable = true;
   environment.pathsToLink = [ "/libexec" ];
 
-  services.displayManager = { defaultSession = "none+i3"; };
+  services = {
 
-  services.xserver = {
-    enable = true;
-
-    displayManager.autoLogin = {
-      enable = true;
-      user = "yanni";
-
+    displayManager = {
+      autoLogin = { enable = true; user = "yanni"; };
     };
 
-    desktopManager = { xterm.enable = false; };
-
-    windowManager.i3 = {
+    xserver.windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [ dmenu i3status i3lock ];
     };
-
   };
 
   services.dbus.enable = true;
 
   services.xserver.xkb.layout = "us,gr";
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Bluetooth settings

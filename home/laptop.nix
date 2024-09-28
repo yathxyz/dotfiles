@@ -79,7 +79,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Solarized Dark";
+    themeFile = "Solarized Dark";
   };
 
   programs.alacritty = { enable = true; };
