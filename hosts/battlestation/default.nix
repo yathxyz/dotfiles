@@ -65,8 +65,6 @@
   #    };
   #  };
 
-  virtualisation.docker.enable = true;
-
   networking.hostName = "battlestation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -151,7 +149,7 @@
     isNormalUser = true;
     description = "Ioannis Eleftheriou";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
       signal-desktop
