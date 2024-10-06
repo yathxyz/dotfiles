@@ -53,6 +53,12 @@
     owner = "yanni";
   };
 
+  age.secrets.kagi = {
+    rekeyFile = ./kagi.age;
+    mode = "400";
+    owner = "yanni";
+  };
+
   # Here we deploy our secrets for our system using environment variables
   # Eventually I'll find something better for this
 
@@ -79,6 +85,9 @@
 
     #OPENROUTER
     OPENROUTER_API_KEY = "$(cat ${config.age.secrets.openrouter.path})";
+
+    #KAGI
+    KAGI_API_KEY = "$(cat ${config.age.secrets.kagi.path})";
   };
 }
 
