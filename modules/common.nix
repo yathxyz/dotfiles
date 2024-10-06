@@ -9,6 +9,11 @@
 
   services.pcscd.enable = true; # Required for yubikey setup
 
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+
   programs.nix-ld.enable = true;
 
   programs.direnv.enable = true;
