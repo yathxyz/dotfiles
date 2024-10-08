@@ -3,7 +3,11 @@
 {
   age.rekey = {
 
-    masterIdentities = [ "${inputs.self}/secrets/yubikey-843-personal.pub" ];
+    masterIdentities = [
+      "${inputs.self}/secrets/yubikey-843-personal.pub"
+      "${inputs.self}/secrets/yubikey-837-personal.pub"
+      "${inputs.self}/secrets/yubikey-408-personal.pub"
+    ];
 
     storageMode = "local";
     localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
