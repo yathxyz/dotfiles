@@ -106,7 +106,10 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = commonModules ++ [
-            ({ nixpkgs.overlays = [ self.overlays.emacs ]; })
+            ({ nixpkgs.overlays = [
+              self.overlays.emacs
+              self.overlays.steamOverlay
+            ]; })
             ./hosts/deck
             home-manager.nixosModules.home-manager
             {
