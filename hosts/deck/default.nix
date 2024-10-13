@@ -68,7 +68,7 @@
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ emacs firefox signal-desktop zotero steam ];
+    packages = with pkgs; [ emacs firefox signal-desktop zotero ];
   };
 
   # Enable automatic login for the user.
