@@ -15,6 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 2; # /boot partition is tiny in this machine
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "deck"; # Define your hostname.
@@ -34,6 +35,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "yanni" ];
   # Configure keymap in X11
   services.xserver = {
     layout = "us";

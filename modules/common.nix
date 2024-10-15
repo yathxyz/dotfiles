@@ -23,9 +23,12 @@
     enableSSHSupport = true;
   };
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
+  virtualisation = {
+    docker.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = false;
+    };
   };
 
   # Set up complementary lisp machine
