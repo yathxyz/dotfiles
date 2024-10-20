@@ -9,6 +9,16 @@
 
   services.pcscd.enable = true; # Required for yubikey setup
 
+  services.flatpak.enable = true;
+
+  systemd.services.flatpak-repo = {
+  wantedBy = [ "multi-user.target" ];
+  path = [ pkgs.flatpak ];
+  script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -73,7 +83,7 @@
   programs.zsh = {
     enable = true;
     ohMyZsh.enable = true;
-    ohMyZsh.theme = "cloud";
+    ohMyZsh.theme = "crunch";
     autosuggestions.enable = true;
     zsh-autoenv.enable = true;
     syntaxHighlighting.enable = true;
@@ -86,6 +96,30 @@
       enable = true;
       extraArgs = "--keep-since 4d --keep 3";
     };
+  };
+
+  # Some environment variables
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+
+    WORKDIR = "$HOME/work";
+    ZOTERODIR = "$HOME/Zotero";
+
+    EDITOR = "nvim";
+
+    # Not officially in the specification
+    XDG_BIN_HOME    = "$HOME/.local/bin";
+
+    # TODO You might want to remove this eventually
+    # You can just use the nix store. Obviously.
+    MASON_BIN_HOME  = "$XDG_DATA_HOME/nvim/mason/bin";
+    PATH = [
+      "${XDG_BIN_HOME}"
+      "${MASON_BIN_HOME}"
+    ];
   };
 
 }
