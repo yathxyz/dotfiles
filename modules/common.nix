@@ -23,6 +23,8 @@
     enableSSHSupport = true;
   };
 
+  programs.wireshark.enable = true;
+
   virtualisation = {
     docker.enable = true;
     podman = {

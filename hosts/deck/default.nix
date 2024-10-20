@@ -37,6 +37,11 @@
 
 
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
+  virtualisation.virtualbox.host.enableKvm = true;
+  virtualisation.virtualbox.host.addNetworkInterface = false;
+
   users.extraGroups.vboxusers.members = [ "yanni" ];
   # Configure keymap in X11
   services.xserver = {
@@ -72,7 +77,7 @@
     description = "Ioannis Eleftheriou";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ emacs firefox signal-desktop zotero ];
+    packages = with pkgs; [ emacs firefox signal-desktop zotero xclip ];
   };
 
   # Enable automatic login for the user.
