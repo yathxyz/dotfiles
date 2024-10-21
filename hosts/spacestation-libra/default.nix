@@ -45,10 +45,6 @@
     shell = pkgs.zsh;
   };
 
-  environment.sessionVariables = {
-    WORKDIR = "$HOME/work/";
-    EDITOR = "nvim";
-  };
   systemd.extraConfig = ''
     DefaultTimeoutStartSec=900s
   '';

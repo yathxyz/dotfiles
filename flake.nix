@@ -83,6 +83,7 @@
           specialArgs = { inherit inputs; };
           modules = commonModules ++ [
             ./hosts/battlestation
+            ./modules/desktops.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -129,6 +130,7 @@
               self.overlays.steamOverlay
             ]; })
             ./hosts/deck
+            ./modules/desktops.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
