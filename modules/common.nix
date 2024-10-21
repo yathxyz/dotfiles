@@ -5,7 +5,24 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  documentation.dev.enable = true;
+  documentation = {
+    enable = true;
+    dev.enable = true;
+    nixos.enable = true;
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
+
+    info.enable = true;
+    doc.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    linux-manual
+    man-pages
+    man-pages-posix
+  ];
 
   services.pcscd.enable = true; # Required for yubikey setup
 
